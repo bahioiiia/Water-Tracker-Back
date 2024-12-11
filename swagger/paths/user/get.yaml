@@ -1,0 +1,54 @@
+tags:
+  - User
+summary: Get list of user
+operationId: getUser
+description: 'Get list of users with this endpoint'
+security:
+  - bearerAuth: []
+parameters:
+  - in: query
+    name: name
+    schema:
+      type: string
+    example: Joy
+  - in: query
+    name: email
+    schema:
+      type: string
+      example: 'world@gmail.com'
+  - in: query
+    name: gender
+    schema:
+      type: string
+      example: 'Woman'    
+responses:
+  '200':
+    description: Successfully found contacts!
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfull find contacts!
+            data:
+              type: array
+              items:
+                $ref: '../../components/schemas/user.yaml'
+              required:
+                - data
+                - name
+                - email
+                - userId
+  # '401':
+  #   $ref: '../../components/responses/401.yaml'
+  '500':
+    $ref: '../../components/responses/500.yaml'

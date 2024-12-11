@@ -14,24 +14,769 @@
       "url": "http://localhost:3000"
     },
     {
-      "url": "https://example.com/api/v1"
+      "url": "https://bo-o-woa.onrender.com"
     }
   ],
   "tags": [
     {
-      "name": "Contacts",
-      "description": "Operations about contacts."
+      "name": "User",
+      "description": "Operations about users."
     },
     {
       "name": "Auth",
       "description": "Auth operations."
+    },
+    {
+      "name": "Waters",
+      "description": "Operations about Waters."
     }
   ],
+  "paths": {
+    "/user": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get list of user",
+        "operationId": "getUser",
+        "description": "Get list of users with this endpoint",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "example": "Joy"
+          },
+          {
+            "in": "query",
+            "name": "email",
+            "schema": {
+              "type": "string",
+              "example": "world@gmail.com"
+            }
+          },
+          {
+            "in": "query",
+            "name": "gender",
+            "schema": {
+              "type": "string",
+              "example": "Woman"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully found contacts!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Successfull find contacts!"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/user"
+                      },
+                      "required": [
+                        "data",
+                        "name",
+                        "email",
+                        "userId"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/user/avatar": {
+      "patch": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Patch list of user",
+        "operationId": "patchUser",
+        "description": "Patch users with this endpoint",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "example": "Joy"
+          },
+          {
+            "in": "query",
+            "name": "email",
+            "schema": {
+              "type": "string",
+              "example": "world@gmail.com"
+            }
+          },
+          {
+            "in": "query",
+            "name": "gender",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Woman",
+                "Man"
+              ],
+              "example": "Woman"
+            }
+          },
+          {
+            "in": "query",
+            "name": "OutdatedPassword",
+            "schema": {
+              "type": "string",
+              "example": 12345
+            }
+          },
+          {
+            "in": "query",
+            "name": "NewPassword",
+            "schema": {
+              "type": "string",
+              "example": 54321
+            }
+          },
+          {
+            "in": "query",
+            "name": "RepeatPassword",
+            "schema": {
+              "type": "string",
+              "example": 54321
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully found contacts!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Successfull find contacts!"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/user"
+                      },
+                      "required": [
+                        "data",
+                        "name",
+                        "email",
+                        "gende",
+                        "OutdatedPassword",
+                        "NewPassword",
+                        "RepeatPassword",
+                        "userId"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/signup": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "SignUp contact",
+        "operationId": "SignUpContact",
+        "description": "SignUp a contact with payload",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password",
+                  "repeatPassword"
+                ],
+                "properties": {
+                  "email": {
+                    "description": "SignUp email",
+                    "type": "string",
+                    "example": "world@gmail.com"
+                  },
+                  "password": {
+                    "description": "User password",
+                    "type": "number",
+                    "example": 12345
+                  },
+                  "repeatPassword": {
+                    "description": "User repeat password",
+                    "type": "number",
+                    "example": 12345
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "SignUp a user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 201
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Successfully SignUp a user!"
+                    },
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/signup"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Login contact",
+        "operationId": "loginContact",
+        "description": "Login a contact with payload",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "email": {
+                    "description": "Login email",
+                    "type": "string",
+                    "example": "world@gmail.com"
+                  },
+                  "password": {
+                    "description": "Login contacts password",
+                    "type": "number",
+                    "example": 12345
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login a contact",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Successfully logged in an user!"
+                    },
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/login"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Logout contact",
+        "operationId": "logoutContact",
+        "description": "Logout a contact with payload",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Logout a contact",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 204
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/waters": {
+      "get": {
+        "tags": [
+          "Waters"
+        ],
+        "summary": "Get list of waters",
+        "operationId": "getWaters",
+        "description": "Get list of waters with this endpoint",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "example": "Joy"
+          },
+          {
+            "in": "query",
+            "name": "dailyNorma",
+            "schema": {
+              "type": "string",
+              "example": "daily norma 1.5L"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully found waters!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Successfull find waters!"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/waters"
+                      },
+                      "required": [
+                        "data",
+                        "name",
+                        "userId"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Waters"
+        ],
+        "summary": "Patch list of water",
+        "operationId": "patchWater",
+        "description": "Patch waters with this endpoint",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "dailyNorma",
+            "schema": {
+              "type": "string",
+              "example": "daily norma 1.5L"
+            }
+          },
+          {
+            "in": "query",
+            "name": "addWater",
+            "schema": {
+              "type": "string",
+              "example": "ADD Water"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully found waters!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Successfull find waters!"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/waters"
+                      },
+                      "required": [
+                        "data",
+                        "userId"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   "components": {
     "securitySchemes": {
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "user": {
+        "type": "object",
+        "required": [
+          "_id",
+          "name",
+          "email",
+          "gende",
+          "userId",
+          "photo"
+        ],
+        "properties": {
+          "_id": {
+            "description": "User id",
+            "type": "string",
+            "example": "65e4decdd286b30065d54af9"
+          },
+          "name": {
+            "description": "User name",
+            "type": "string",
+            "example": "Joy"
+          },
+          "email": {
+            "description": "User email",
+            "type": "string",
+            "example": "world@gmail.com"
+          },
+          "gende": {
+            "description": "User gender",
+            "type": "string",
+            "enum": [
+              "Woman",
+              "Man"
+            ]
+          },
+          "userId": {
+            "description": "User id",
+            "type": "string",
+            "example": "65e4decdd286b30065d54af9"
+          },
+          "photo": {
+            "description": "Link to user photo",
+            "type": "string",
+            "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.jpg"
+          }
+        }
+      },
+      "signup": {
+        "type": "object",
+        "required": [
+          "email",
+          "password",
+          "repeatPassword"
+        ],
+        "properties": {
+          "email": {
+            "description": "SignUp user email",
+            "type": "string",
+            "example": "world@gmail.com"
+          },
+          "password": {
+            "description": "SingUp user password",
+            "type": "string",
+            "example": "12345"
+          },
+          "_id": {
+            "description": "SingUp user id",
+            "type": "string",
+            "example": "65e4decdd286b30065d54af9"
+          }
+        }
+      },
+      "login": {
+        "type": "object",
+        "required": [
+          "email",
+          "password"
+        ],
+        "properties": {
+          "accessToken": {
+            "description": "Login contacts token",
+            "type": "string",
+            "example": "nSu9mqGJzsaEGwx4nBXoHGykYumTCbEqUY6Xg5JB"
+          }
+        }
+      },
+      "waters": {
+        "type": "object",
+        "required": [
+          "_id",
+          "name",
+          "dailyNorma",
+          "addWater",
+          "userId",
+          "photo"
+        ],
+        "properties": {
+          "_id": {
+            "description": "User id",
+            "type": "string",
+            "example": "65e4decdd286b30065d54af9"
+          },
+          "name": {
+            "description": "User name",
+            "type": "string",
+            "example": "Joy"
+          },
+          "dailyNorma": {
+            "description": "User daily Norma",
+            "type": "string",
+            "example": "1.5L"
+          },
+          "userId": {
+            "description": "User id",
+            "type": "string",
+            "example": "65e4decdd286b30065d54af9"
+          },
+          "photo": {
+            "description": "Link to user photo",
+            "type": "string",
+            "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.jpg"
+          }
+        }
+      }
+    },
+    "responses": {
+      "409": {
+        "description": "Email in use",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "status",
+                "message",
+                "data"
+              ],
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 409
+                },
+                "message": {
+                  "type": "string",
+                  "example": "EmailInUse"
+                },
+                "data": {
+                  "type": "object",
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Email in use"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Bad request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "status",
+                "message",
+                "data"
+              ],
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 500
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Badrequest"
+                },
+                "data": {
+                  "type": "object",
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Bad request"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
