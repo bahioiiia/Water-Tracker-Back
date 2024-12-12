@@ -1,37 +1,35 @@
 import { Schema, model } from 'mongoose';
-import { typeList } from '../../constants/contacts.js';
-import { handleSaveError, setUpdateSettings } from "./hooks.js";
 
-const waterSchema = new Schema({
-    volume: {
-        type: String,
-        required: true,
-    },
-    curDailyNorm: {
-        type: String,
-        required: true,
-    },
+import { handleSaveError, setUpdateSettings } from './hooks.js';
+
+const waterSchema = new Schema(
+  {
     date: {
-        type: Date,
-        required: true,
+      type: Date,
+      required: true,
     },
+
+    volume: {
+      type: Number,
+      required: true,
+    },
+
     userId: {
-        type: Schema.Types.ObjectId,
-        ref: "user",
-        required: true,
+      type: Schema.Types.ObjectId,
+      ref: 'user',
+      required: true,
     },
-}, { versionKey: false, timestamps: true });
+  },
+  {
+    versionKey: false,
+    timestamps: true,
+  },
+);
 
-waterSchema.post("save", handleSaveError);
+waterSchema.post('save', handleSaveError);
+waterSchema.pre('findOneAndUpdate', setUpdateSettings);
+waterSchema.post('findOneAndUpdate', handleSaveError);
 
-waterSchema.pre("findOneAndUpdate", setUpdateSettings);
-
-waterSchema.post("findOneAndUpdate", handleSaveError);
-
-export const sortByList = [
-    'date',
-];
-
-const waterCollection = model('contacts', waterSchema);
+const waterCollection = model('water', waterSchema);
 
 export default waterCollection;

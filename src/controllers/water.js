@@ -11,16 +11,21 @@ import { env } from '../utils/env.js';
 
 
 
-export const addGlassController = async (req, res, next) => {
-    const { _id: userId } = req.user;
+import { createGlassWater } from "../services/water.js";
 
-    const data = await waterServices.addGlass({ ...req.body, userId});
+
+
+export const addGlassController= async(req, res)=>{
+    const { _id: userId } = req.user;
+    
+    const glassWater = await createGlassWater({ ...req.body, userId });
     res.status(201).json({
-        status: 201,
-        message: 'Successfully added a glass!',
-        data,
+      status: 201,
+      message: Successfully created a glass water!,
+      data: glassWater,
     });
-};
+
+}
 
 export const getDailyController = async (req, res, next) => {
         const { page, perPage } = parsePaginationParams(req.query);
