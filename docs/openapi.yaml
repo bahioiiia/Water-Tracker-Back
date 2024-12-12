@@ -5,16 +5,55 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  description: This is a documentation of contacts app
+  description: 
+    This is a documentation of contacts app
 tags:
-  - name: Contacts
-    description: Operations about contacts.
+  - name: User
+    description: Operations about users.
   - name: Auth
     description: Auth operations.
+  - name: Waters
+    description: Operations about Waters.
 servers:
   - url: http://localhost:3000
-  - url: https://example.com/api/v1
+  - url: https://bo-o-woa.onrender.com
 paths:
+  /user:
+    get:
+      $ref: ../swagger/paths/user/get.yaml
+  /user/avatar:
+    patch:
+      $ref: ../swagger/paths/user/patch.yaml
+  /auth/signup:
+    post:
+      $ref: ../swagger/paths/auth/signup/post.yaml
+  /auth/login:
+    post:
+      $ref: ../swagger/paths/auth/login/post.yaml
+  /auth/logout:
+    post:
+      $ref: ../swagger/paths/auth/logout/post.yaml
+  # /auth/refresh:
+  #   post:
+  #     $ref: ../swagger/paths/auth/refresh/post.yaml
+  # /auth/send-reset-email:
+  #   post:
+  #     $ref: ../swagger/paths/auth/send-reset-email/post.yaml
+  # /auth/reset-pwd:
+  #   post:
+  #     $ref: ../swagger/paths/auth/reset-pwd/post.yaml
+  /waters:
+    get:
+      $ref: ../swagger/paths/waters/get.yaml
+    patch:
+      $ref: ../swagger/paths/waters/patch.yaml
+  # /contacts/{id}:
+  #   get:
+  #     $ref: ../swagger/paths/contacts/{id}/get.yaml
+  #   patch:
+  #     $ref: ../swagger/paths/contacts/{id}/patch.yaml
+  #   delete:
+  #     $ref: ../swagger/paths/contacts/{id}/delete.yaml
 components:
   securitySchemes:
     bearerAuth:

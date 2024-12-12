@@ -1,0 +1,24 @@
+tags:
+  - Auth
+summary: Logout contact
+operationId: logoutContact
+description: 'Logout a contact with payload'
+security:
+  - bearerAuth: []
+responses:
+  '204':
+    description: Logout a contact
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 204
+  '500':
+    $ref: '../../../components/responses/500.yaml'

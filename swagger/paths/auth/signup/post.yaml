@@ -1,0 +1,54 @@
+tags:
+  - Auth
+summary: SignUp contact
+operationId: SignUpContact
+description: 'SignUp a contact with payload'
+security:
+  - bearerAuth: []
+requestBody:
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        required:
+          - email
+          - password
+          - repeatPassword
+        properties:
+          email:
+            description: "SignUp email"
+            type: string
+            example: 'world@gmail.com'
+          password:
+            description: "User password"
+            type: number
+            example: 12345
+          repeatPassword:
+            description: "User repeat password"
+            type: number
+            example: 12345
+responses:
+  '201':
+    description: SignUp a user
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Successfully SignUp a user!
+            data:
+              type: object
+              $ref: '../../../components/schemas/signup.yaml'
+  '409':
+    $ref: '../../../components/responses/user/409.yaml'
+  '500':
+    $ref: '../../../components/responses/500.yaml'

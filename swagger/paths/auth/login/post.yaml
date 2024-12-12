@@ -1,0 +1,51 @@
+tags:
+  - Auth
+summary: Login contact
+operationId: loginContact
+description: 'Login a contact with payload'
+security:
+  - bearerAuth: []
+requestBody:
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        required:
+          - email
+          - password
+        properties:
+          email:
+            description: "Login email"
+            type: string
+            example: 'world@gmail.com'
+          password:
+            description: "Login contacts password"
+            type: number
+            example: 12345
+responses:
+  '200':
+    description: Login a contact
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully logged in an user!
+            data:
+              type: object
+              $ref: '../../../components/schemas/login.yaml'
+  # '401':
+  #   $ref: '../../../components/responses/user/401.yaml'
+  '409':
+    $ref: '../../../components/responses/user/409.yaml'
+  '500':
+    $ref: '../../../components/responses/500.yaml'

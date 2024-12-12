@@ -1,0 +1,18 @@
+type: object
+required:
+  - email
+  - password
+  - repeatPassword
+properties:
+  email:
+    description: "SignUp user email"
+    type: string
+    example: 'world@gmail.com'
+  password:
+    description: "SingUp user password"
+    type: string
+    example: '12345'
+  _id:
+    description: "SingUp user id"
+    type: string
+    example: 65e4decdd286b30065d54af9

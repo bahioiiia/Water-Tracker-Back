@@ -22,10 +22,12 @@ export const setupServer = () => {
     app.use(express.static("uploads"));
     //app.use(logger);
 
-    app.use('/auth', authRouter);
+    
     //app.use('/contacts', contactsRouter);
-    //app.use('/uploads', express.static(UPLOAD_DIR));
-    //app.use('/api-docs', swaggerDocs());	
+    // app.use('/uploads', express.static(UPLOAD_DIR));
+    app.use('/api-docs', swaggerDocs());
+    app.use('/auth', authRouter);
+
     app.use(notFoundHandler);
 
     app.use(errorHandler);
