@@ -7,7 +7,7 @@ import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { logger } from './middlewares/logger.js';
 //import userRouter from "./routers/user.js";
-//import waterRouter from "./routers/water.js";
+import waterRouter from "./routers/water.js";
 import authRouter from "./routers/auth.js";
 import { UPLOAD_DIR } from './constants/index.js';
 import { swaggerDocs } from './middlewares/swaggerDocs.js';
@@ -23,7 +23,7 @@ export const setupServer = () => {
     //app.use(logger);
 
     // app.use('/user', userRouter);    
-    // app.use('/water', waterRouter);
+    app.use('/water', waterRouter);
     // app.use('/uploads', express.static(UPLOAD_DIR));
     app.use('/api-docs', swaggerDocs());
     app.use('/auth', authRouter);
