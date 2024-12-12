@@ -17,8 +17,6 @@ waterRouter.use(authenticate);
 
 //contactsRouter.get('/', ctrlWrapper(contactsController.getContactsController)); 
 
-waterRouter.post('/', isValidId, ctrlWrapper(waterController.addGlassController));
-
 waterRouter.post('/', validateBody(glassAddSchema), ctrlWrapper(waterController.addGlassController));
 // upload.fields([{name: "poster", maxCount: 1}, {name: "subposter", maxCount: 3}])
 // upload.array("poster", 10);
