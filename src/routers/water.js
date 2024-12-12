@@ -17,7 +17,7 @@ waterRouter.use(authenticate);
 
 //contactsRouter.get('/', ctrlWrapper(contactsController.getContactsController)); 
 
-waterRouter.get('/:glassId', isValidId, ctrlWrapper(waterController.getGlassByIdController));
+waterRouter.post('/', isValidId, ctrlWrapper(waterController.addGlassController));
 
 waterRouter.post('/', validateBody(glassAddSchema), ctrlWrapper(waterController.addGlassController));
 // upload.fields([{name: "poster", maxCount: 1}, {name: "subposter", maxCount: 3}])
@@ -27,6 +27,8 @@ waterRouter.post('/', validateBody(glassAddSchema), ctrlWrapper(waterController.
 waterRouter.patch('/:glassId', isValidId, validateBody(glassUpdateSchema), ctrlWrapper(waterController.patchGlassController));
 
 waterRouter.delete('/:glassId', isValidId, ctrlWrapper(waterController.deleteGlassController));
+
+waterRouter.get('/daily', isValidId, ctrlWrapper(waterController.getDailyController));
 
 waterRouter.get('/monthly', isValidId, ctrlWrapper(waterController.getMonthlyController));
 

@@ -15,7 +15,7 @@ const userRouter = Router();
 
 userRouter.use(authenticate);
 
-userRouter.get('/', ctrlWrapper(userController.getUserController)); 
+userRouter.get('/', ctrlWrapper(userController.getUserController));
 
 userRouter.patch('/avatar', upload.single('photo'), validateBody(avatarUpdateSchema), ctrlWrapper(userController.avatarUpdateController));
 // upload.fields([{name: "poster", maxCount: 1}, {name: "subposter", maxCount: 3}])
