@@ -4,10 +4,9 @@ import * as userController from '../controllers/user.js';
 import ctrlWrapper from "../utils/ctrlWrapper.js";
 import validateBody from "../utils/validateBody.js";
 
-import { avatarUpdateSchema, userUpdateSchema } from "../validation/users.js";
+import { userUpdateSchema} from '../validation/user.js';
 import { isValidId } from '../middlewares/isValidId.js';
 import { authenticate } from "../middlewares/authenticate.js";
-
 import { upload } from '../middlewares/upload.js';
 
 
@@ -17,11 +16,10 @@ userRouter.use(authenticate);
 
 userRouter.get('/', ctrlWrapper(userController.getUserController));
 
-userRouter.patch('/avatar', upload.single('photo'), validateBody(avatarUpdateSchema), ctrlWrapper(userController.avatarUpdateController));
-// upload.fields([{name: "poster", maxCount: 1}, {name: "subposter", maxCount: 3}])
-// upload.array("poster", 10);
+//  змінюється лише avatar
+userRouter.patch('/avatar', isValidId, upload.single('photo'), ctrlWrapper(userController.avatarUpdateController),);
+//  змінюється body user + newpassord
+userRouter.patch('/', isValidId, validateBody(userUpdateSchema), ctrlWrapper(userController.patchUserController));
 
-userRouter.patch('/', isValidId, validateBody(userUpdateSchema), ctrlWrapper(userController.patchContactController));
-
-//userRouter.delete('/', isValidId, ctrlWrapper(userController.deleteUserController));
+// userRouter.delete('/', isValidId, ctrlWrapper(userController.deleteUserController));
 export default userRouter;
