@@ -8,4 +8,5 @@ export const userUpdateSchema = Joi.object({
   email: Joi.string().min(3).max(20).pattern(emailRegexp),
   password: Joi.string().min(3).max(20),
   newpassword: Joi.string().min(8).max(20),
+  // dailyNorm: Joi.number().less(15000),
 });

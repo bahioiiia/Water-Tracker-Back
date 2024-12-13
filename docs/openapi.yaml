@@ -24,7 +24,7 @@ paths:
   /user/avatar:
     patch:
       $ref: ../swagger/paths/user/patch.yaml
-  /auth/signup:
+  /auth/register:
     post:
       $ref: ../swagger/paths/auth/signup/post.yaml
   /auth/login:

@@ -1,6 +1,6 @@
 tags:
   - Auth
-summary: SignUp user
+summary: Sign Up
 operationId: SignUpUser
 description: 'SignUp a user with payload'
 security:

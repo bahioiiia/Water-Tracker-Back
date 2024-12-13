@@ -1,6 +1,6 @@
 tags:
   - Auth
-summary: Logout user
+summary: Logout
 operationId: logoutUser
 description: 'Logout a contact with payload'
 security:
