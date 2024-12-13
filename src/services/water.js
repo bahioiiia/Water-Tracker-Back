@@ -47,7 +47,7 @@ export const getDaily = async (userId, date) => {
 
   const user = await UserCollection.findById(userId);
 
-  const dailyNorm = user.dailyNorm || 2000;
+  const dailyNorm = user.dailyNorm || 1500; //default Daily Norm
 
   const consumedPercentage = ((totalWater / dailyNorm) * 100).toFixed(0);
 
