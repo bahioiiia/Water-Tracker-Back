@@ -13,7 +13,7 @@ export const getUserController = async (req, res) => {
   const data = await getUser(user);
   res.json({
     stasus: 200,
-    message: `Successfull find contacts`,
+    message: `Successfull find user`,
     data,
   });
 };
@@ -40,7 +40,7 @@ export const avatarUpdateController = async (req, res) => {
   }
   res.json({
     status: 200,
-    message: `Successfully patched a contact!`,
+    message: `Successfully patched a user!`,
     data: data,
   });
 };
@@ -56,7 +56,7 @@ export const patchUserController = async (req, res) => {
   }
   res.json({
     status: 200,
-    message: `Successfully patched a contact!`,
+    message: `Successfully patched a user!`,
     data: data,
   });
 };

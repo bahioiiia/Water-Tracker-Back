@@ -193,12 +193,12 @@
         }
       }
     },
-    "/auth/signup": {
+    "/auth/register": {
       "post": {
         "tags": [
           "Auth"
         ],
-        "summary": "SignUp user",
+        "summary": "Sign Up",
         "operationId": "SignUpUser",
         "description": "SignUp a user with payload",
         "security": [
@@ -275,7 +275,7 @@
         "tags": [
           "Auth"
         ],
-        "summary": "Login user",
+        "summary": "Sign In",
         "operationId": "loginUser",
         "description": "Login a user with payload",
         "security": [
@@ -352,7 +352,7 @@
         "tags": [
           "Auth"
         ],
-        "summary": "Logout user",
+        "summary": "Logout",
         "operationId": "logoutUser",
         "description": "Logout a contact with payload",
         "security": [

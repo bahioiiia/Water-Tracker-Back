@@ -1,6 +1,6 @@
 tags:
   - Auth
-summary: Login user
+summary: Sign In
 operationId: loginUser
 description: 'Login a user with payload'
 security:
