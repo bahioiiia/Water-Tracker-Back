@@ -8,26 +8,16 @@ import { glassAddSchema, glassUpdateSchema } from "../validation/water.js";
 import { isValidId } from '../middlewares/isValidId.js';
 import { authenticate } from "../middlewares/authenticate.js";
 
-import { upload } from '../middlewares/upload.js';
-
-
 const waterRouter = Router();
 
 waterRouter.use(authenticate);
 
-//contactsRouter.get('/', ctrlWrapper(contactsController.getContactsController)); 
+waterRouter.post('/glass', validateBody(glassAddSchema), ctrlWrapper(waterController.addGlassController));
 
-waterRouter.get('/:glassId', isValidId, ctrlWrapper(waterController.getGlassByIdController));
+waterRouter.patch('/glass/:glassId', isValidId, validateBody(glassUpdateSchema), ctrlWrapper(waterController.patchGlassController));
+waterRouter.delete('/glass/:glassId', isValidId, ctrlWrapper(waterController.deleteGlassController));
 
-waterRouter.post('/', validateBody(glassAddSchema), ctrlWrapper(waterController.addGlassController));
-// upload.fields([{name: "poster", maxCount: 1}, {name: "subposter", maxCount: 3}])
-// upload.array("poster", 10);
-//contactsRouter.put('/:contactId', upload.single('photo'), isValidId, validateBody(contactAddSchema), ctrlWrapper(contactsController.upsertContactController));
-
-waterRouter.patch('/:glassId', isValidId, validateBody(glassUpdateSchema), ctrlWrapper(waterController.patchGlassController));
-
-waterRouter.delete('/:glassId', isValidId, ctrlWrapper(waterController.deleteGlassController));
-
-waterRouter.get('/monthly', isValidId, ctrlWrapper(waterController.getMonthlyController));
+waterRouter.get('/daily', ctrlWrapper(waterController.getDailyController));
+waterRouter.get('/monthly', ctrlWrapper(waterController.getMonthlyController));
 
 export default waterRouter;
