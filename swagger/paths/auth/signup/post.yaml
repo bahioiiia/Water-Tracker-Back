@@ -19,7 +19,7 @@ requestBody:
             type: string
             example: 'world@gmail.com'
           password:
-            description: "User password"
+            description: "User password (min:8, max:60)"
             type: number
             example: 12345
 responses:
