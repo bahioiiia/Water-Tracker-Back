@@ -193,7 +193,7 @@
         }
       }
     },
-    "/auth/register": {
+    "/auth/signup": {
       "post": {
         "tags": [
           "Auth"
@@ -222,7 +222,7 @@
                     "example": "world@gmail.com"
                   },
                   "password": {
-                    "description": "User password",
+                    "description": "User password (min:8, max:60)",
                     "type": "number",
                     "example": 12345
                   }
@@ -270,7 +270,7 @@
         }
       }
     },
-    "/auth/login": {
+    "/auth/signin": {
       "post": {
         "tags": [
           "Auth"
