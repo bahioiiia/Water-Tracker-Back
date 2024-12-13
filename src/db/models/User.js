@@ -24,6 +24,7 @@ const userSchema = new Schema(
     },
     dailyNorm: {
       type: Number,
+      default: `1500`,
       required: true,
     },
   },

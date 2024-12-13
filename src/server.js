@@ -22,6 +22,7 @@ export const setupServer = () => {
     app.use(express.static('uploads'));
     //app.use(logger);
     // app.use('/user', userRouter);
+    // app.use('/user', userRouter);
     app.use('/water', waterRouter);
     app.use('/uploads', express.static(UPLOAD_DIR));
     app.use('/api-docs', swaggerDocs());
