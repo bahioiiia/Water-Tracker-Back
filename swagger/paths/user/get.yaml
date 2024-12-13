@@ -5,22 +5,22 @@ operationId: getUser
 description: 'Get list of users with this endpoint'
 security:
   - bearerAuth: []
-parameters:
-  - in: query
-    name: name
-    schema:
-      type: string
-    example: Joy
-  - in: query
-    name: email
-    schema:
-      type: string
-      example: 'world@gmail.com'
-  - in: query
-    name: gender
-    schema:
-      type: string
-      example: 'Woman'    
+# parameters:
+#   - in: query
+#     name: name
+#     schema:
+#       type: string
+#     example: Joy
+#   - in: query
+#     name: email
+#     schema:
+#       type: string
+#       example: 'world@gmail.com'
+#   - in: query
+#     name: gender
+#     schema:
+#       type: string
+#       example: 'Woman'    
 responses:
   '200':
     description: Successfully found contacts!
@@ -47,8 +47,8 @@ responses:
                 - data
                 - name
                 - email
-                - userId
-  # '401':
-  #   $ref: '../../components/responses/401.yaml'
+  '401':
+    $ref: '../../components/responses/401.yaml'
   '500':
     $ref: '../../components/responses/500.yaml'
+

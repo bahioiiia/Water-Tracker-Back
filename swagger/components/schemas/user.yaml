@@ -4,7 +4,7 @@ required:
   - name
   - email
   - gende
-  - userId
+  - dailyNorm
   - photo
 properties:
   _id:
@@ -23,11 +23,7 @@ properties:
     description: "User gender"
     type: string
     enum: ['Woman', 'Man']
-  userId:
-    description: "User id"
-    type: string
-    example: 65e4decdd286b30065d54af9
   photo:
     description: "Link to user photo"
     type: string
-    example: https://res.cloudinary.com/uqwgdu/image/upload/image.jpg
+    example: https://image/upload/image.jpg

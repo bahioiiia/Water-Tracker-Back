@@ -2,7 +2,7 @@ tags:
   - User
 summary: Patch list of user
 operationId: patchUser
-description: 'Patch users with this endpoint'
+description: 'Patch user with this endpoint'
 security:
   - bearerAuth: []
 parameters:
@@ -23,23 +23,13 @@ parameters:
       enum: ['Woman', 'Man']
       example: 'Woman'    
   - in: query
-    name: OutdatedPassword
-    schema:
-      type: string
-      example: 12345
-  - in: query
-    name: NewPassword
-    schema:
-      type: string
-      example: 54321
-  - in: query
-    name: RepeatPassword
+    name: newpassword
     schema:
       type: string
       example: 54321
 responses:
   '200':
-    description: Successfully found contacts!
+    description: Successfully found user!
     content:
       application/json:
         schema:
@@ -54,7 +44,7 @@ responses:
               example: 200
             message:
               type: string
-              example: Successfull find contacts!
+              example: Successfull find user!
             data:
               type: array
               items:
@@ -64,15 +54,10 @@ responses:
                 - name
                 - email
                 - gende
-                - OutdatedPassword
-                - NewPassword
-                - RepeatPassword
-                - userId
-  # '400':
-  #   $ref: '../../../components/responses/400.yaml'
-  # '401':
-  #   $ref: '../../../components/responses/401.yaml'
-  # '404':
-  #   $ref: '../../../components/responses/404.yaml'
-  # '500':
-  #   $ref: '../../../components/responses/500.yaml'
+                - password
+  '401':
+    $ref: '../../components/responses/401.yaml'
+  '404':
+    $ref: '../../components/responses/404.yaml'
+  '500':
+    $ref: '../../components/responses/500.yaml'

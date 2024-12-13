@@ -1,13 +1,13 @@
 tags:
   - Auth
-summary: Logout contact
-operationId: logoutContact
+summary: Logout user
+operationId: logoutUser
 description: 'Logout a contact with payload'
 security:
   - bearerAuth: []
 responses:
   '204':
-    description: Logout a contact
+    description: Logout a user
     content:
       application/json:
         schema:

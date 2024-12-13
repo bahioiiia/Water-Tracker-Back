@@ -1,8 +1,8 @@
 tags:
   - Auth
-summary: Login contact
-operationId: loginContact
-description: 'Login a contact with payload'
+summary: Login user
+operationId: loginUser
+description: 'Login a user with payload'
 security:
   - bearerAuth: []
 requestBody:
@@ -19,12 +19,12 @@ requestBody:
             type: string
             example: 'world@gmail.com'
           password:
-            description: "Login contacts password"
+            description: "Login user password"
             type: number
             example: 12345
 responses:
   '200':
-    description: Login a contact
+    description: Login a user
     content:
       application/json:
         schema:
@@ -43,9 +43,7 @@ responses:
             data:
               type: object
               $ref: '../../../components/schemas/login.yaml'
-  # '401':
-  #   $ref: '../../../components/responses/user/401.yaml'
-  '409':
-    $ref: '../../../components/responses/user/409.yaml'
+  '401':
+    $ref: '../../../components/responses/user/401.yaml'
   '500':
     $ref: '../../../components/responses/500.yaml'

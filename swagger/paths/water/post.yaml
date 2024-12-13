@@ -1,0 +1,47 @@
+tags:
+  - Water
+summary: Post list of water
+operationId: postWater
+description: 'Post list of water with this endpoint'
+security:
+  - bearerAuth: []
+parameters:
+  - in: query
+    name: glass
+    schema:
+      type: string
+    example: "250 ml"
+  - in: query
+    name: data
+    schema:
+      type: string
+      example: 'newData'
+responses:
+  '200':
+    description: Successfully found water!
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfull find water!
+            data:
+              type: array
+              items:
+                $ref: ../../components/schemas/water/water.yaml
+              required:
+                - glass
+                - data
+  '401':
+    $ref: '../../components/responses/401.yaml'
+  '500':
+    $ref: '../../components/responses/500.yaml'
