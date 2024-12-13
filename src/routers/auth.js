@@ -6,9 +6,9 @@ import validateBody from '../utils/validateBody.js';
 
 const authRouter = Router();
 
-authRouter.post("/register", validateBody(vldt.authRegisterSchema), ctrlWrapper(auth.registerController));
+authRouter.post("/signup", validateBody(vldt.authRegisterSchema), ctrlWrapper(auth.registerController));
 
-authRouter.post("/login", validateBody(vldt.authLoginSchema), ctrlWrapper(auth.loginController));
+authRouter.post("/signin", validateBody(vldt.authLoginSchema), ctrlWrapper(auth.loginController));
 
 authRouter.post("/refresh", ctrlWrapper(auth.refreshSessionController),);
 
