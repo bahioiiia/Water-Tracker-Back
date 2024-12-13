@@ -1,8 +1,8 @@
 tags:
   - Auth
-summary: SignUp contact
-operationId: SignUpContact
-description: 'SignUp a contact with payload'
+summary: SignUp user
+operationId: SignUpUser
+description: 'SignUp a user with payload'
 security:
   - bearerAuth: []
 requestBody:
@@ -13,7 +13,6 @@ requestBody:
         required:
           - email
           - password
-          - repeatPassword
         properties:
           email:
             description: "SignUp email"
@@ -21,10 +20,6 @@ requestBody:
             example: 'world@gmail.com'
           password:
             description: "User password"
-            type: number
-            example: 12345
-          repeatPassword:
-            description: "User repeat password"
             type: number
             example: 12345
 responses:

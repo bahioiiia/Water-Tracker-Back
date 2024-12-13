@@ -1,21 +1,21 @@
 tags:
-  - Waters
-summary: Get list of waters
-operationId: getWaters
-description: 'Get list of waters with this endpoint'
+  - Water
+summary: Patch list of water
+operationId: patchWater
+description: 'Patch waters with this endpoint'
 security:
   - bearerAuth: []
 parameters:
   - in: query
-    name: name
+    name: glass
     schema:
       type: string
-    example: Joy
+    example: "250 ml"
   - in: query
-    name: dailyNorma
+    name: data
     schema:
       type: string
-      example: 'daily norma 1.5L'
+      example: 'Data'
 responses:
   '200':
     description: Successfully found waters!
@@ -37,13 +37,14 @@ responses:
             data:
               type: array
               items:
-                $ref: ../../components/schemas/waters/waters.yaml
+                $ref: ../../components/schemas/water/water.yaml
               required:
                 - data
-                - name
-                # - email
-                - userId
-  # '401':
-  #   $ref: '../../components/responses/401.yaml'
+  '400':
+    $ref: '../../components/responses/400.yaml'
+  '401':
+    $ref: '../../components/responses/401.yaml'
+  '404':
+    $ref: '../../components/responses/404.yaml'
   '500':
-    $ref: '../../components/responses/500.yaml'
+    $ref: '../../components/responses/500.yaml'                

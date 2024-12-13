@@ -12,7 +12,7 @@ tags:
     description: Operations about users.
   - name: Auth
     description: Auth operations.
-  - name: Waters
+  - name: Water
     description: Operations about Waters.
 servers:
   - url: http://localhost:3000
@@ -36,24 +36,14 @@ paths:
   # /auth/refresh:
   #   post:
   #     $ref: ../swagger/paths/auth/refresh/post.yaml
-  # /auth/send-reset-email:
-  #   post:
-  #     $ref: ../swagger/paths/auth/send-reset-email/post.yaml
-  # /auth/reset-pwd:
-  #   post:
-  #     $ref: ../swagger/paths/auth/reset-pwd/post.yaml
-  /waters:
-    get:
-      $ref: ../swagger/paths/waters/get.yaml
+  /water/glass:
+    post:
+      $ref: ../swagger/paths/water/post.yaml
     patch:
-      $ref: ../swagger/paths/waters/patch.yaml
-  # /contacts/{id}:
-  #   get:
-  #     $ref: ../swagger/paths/contacts/{id}/get.yaml
-  #   patch:
-  #     $ref: ../swagger/paths/contacts/{id}/patch.yaml
-  #   delete:
-  #     $ref: ../swagger/paths/contacts/{id}/delete.yaml
+      $ref: ../swagger/paths/water/patch.yaml
+  /water/glass/{id}:
+    delete:
+      $ref: ../swagger/paths/water/{id}/delete.yaml
 components:
   securitySchemes:
     bearerAuth:

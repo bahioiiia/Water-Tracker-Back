@@ -19,7 +19,7 @@ userRouter.get('/', ctrlWrapper(userController.getUserController));
 //  змінюється лише avatar
 userRouter.patch('/avatar', isValidUserId, upload.single('photo'), ctrlWrapper(userController.avatarUpdateController),);
 //  змінюється body user + newpassord
-userRouter.patch('/', isValidUserId, validateBody(userUpdateSchema), ctrlWrapper(userController.patchUserController));
+userRouter.patch('/', validateBody(userUpdateSchema), ctrlWrapper(userController.patchUserController));
 
 // userRouter.delete('/', isValidId, ctrlWrapper(userController.deleteUserController));
 export default userRouter;

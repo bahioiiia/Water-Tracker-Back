@@ -1,0 +1,31 @@
+tags:
+  - Water
+summary: Delete water by glass
+operationId: deleteWater
+description: 'Get water by glassId'
+security:
+  - bearerAuth: []
+parameters:
+  - in: path
+    name: id
+    required: true
+    schema:
+      type: string
+      example: '250 ml'
+responses:
+  '204':
+    description: Delete found water!
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+  '401':
+    $ref: '../../../components/responses/401.yaml'
+  '404':
+    $ref: '../../../components/responses/404.yaml'
+  '500':
+    $ref: '../../../components/responses/500.yaml'
