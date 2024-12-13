@@ -5,7 +5,7 @@ import ctrlWrapper from "../utils/ctrlWrapper.js";
 import validateBody from "../utils/validateBody.js";
 
 import { userUpdateSchema} from '../validation/user.js';
-import { isValidId } from '../middlewares/isValidId.js';
+import { isValidUserId } from '../middlewares/isValidId.js';
 import { authenticate } from "../middlewares/authenticate.js";
 import { upload } from '../middlewares/upload.js';
 
@@ -17,9 +17,9 @@ userRouter.use(authenticate);
 userRouter.get('/', ctrlWrapper(userController.getUserController));
 
 //  змінюється лише avatar
-userRouter.patch('/avatar', isValidId, upload.single('photo'), ctrlWrapper(userController.avatarUpdateController),);
+userRouter.patch('/avatar', isValidUserId, upload.single('photo'), ctrlWrapper(userController.avatarUpdateController),);
 //  змінюється body user + newpassord
-userRouter.patch('/', isValidId, validateBody(userUpdateSchema), ctrlWrapper(userController.patchUserController));
+userRouter.patch('/', isValidUserId, validateBody(userUpdateSchema), ctrlWrapper(userController.patchUserController));
 
 // userRouter.delete('/', isValidId, ctrlWrapper(userController.deleteUserController));
 export default userRouter;
