@@ -24,12 +24,12 @@ paths:
   /user/avatar:
     patch:
       $ref: ../swagger/paths/user/patch.yaml
-  /auth/register:
+  /auth/signup:
     post:
       $ref: ../swagger/paths/auth/signup/post.yaml
-  /auth/login:
+  /auth/signin:
     post:
-      $ref: ../swagger/paths/auth/login/post.yaml
+      $ref: ../swagger/paths/auth/signin/post.yaml
   /auth/logout:
     post:
       $ref: ../swagger/paths/auth/logout/post.yaml
