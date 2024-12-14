@@ -30,8 +30,6 @@ export const deleteGlassController = async (req, res) => {
   res.status(204).send();
 };
 
-/*------------------ ALL BELOW NOT TESTED AT ALL!! ------------------*/
-
 export const patchGlassController = async (req, res) => {
   const { glassId } = req.params;
   const { _id: userId } = req.user;
@@ -65,18 +63,21 @@ export const getDailyController = async (req, res, next) => {
   res.status(200).json(dailyData);
 };
 
-/*------------------ ALL BELOW ARE JUST TEMPLATE. NOT WORKING !! ------------------*/
+export const getMonthlyController = async (req, res) => {
+  const { _id } = req.user;
+  const { date } = req.body;
 
-export const getMonthlyController = async (req, res, next) => {
-  const { sortBy, sortOrder } = parseSortParams(req.query, sortByList);
-  const filter = parseFilterParams(req.query);
-  const { _id: userId } = req.user;
-  filter.userId = userId;
+  if (!date) {
+    return res.status(400).json({ message: 'Date is required.' });
+  }
 
-  const data = await waterServices.getGlasses({ sortBy, sortOrder, filter });
-  res.json({
-    status: 200,
-    message: 'Successfully found all glasses per month!',
-    data,
-  });
+  const monthlyData = await waterServices.getMonthly(_id, date);
+
+  if (monthlyData.length === 0) {
+    return res.status(404).json({
+      message: `No water logs found for user ${_id} on date ${date}`,
+    });
+  }
+
+  res.status(200).json(monthlyData);
 };
