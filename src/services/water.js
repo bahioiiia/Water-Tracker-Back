@@ -65,7 +65,6 @@ export const getDaily = async (userId, date) => {
   const consumedPercentage = ((totalWater / dailyNorm) * 100).toFixed(0);
 
   return {
-    userId,
     date: date,
     dailyNorma: `${(dailyNorm / 1000).toFixed(1)} L`,
     totalWater: `${(totalWater / 1000).toFixed(1)} L`,
@@ -79,15 +78,50 @@ export const getDaily = async (userId, date) => {
   };
 };
 
-export const getMonthly = async ({
-  sortBy = 'date',
-  sortOrder = 'asc',
-  filter = {},
-}) => {
-  const query = waterCollection.find();
-  if (filter.userId) {
-    query.where('userId').equals(filter.userId);
+export const getMonthly = async (userId, date) => {
+  const requestDate = new Date(date);
+
+  const today = new Date();
+  today.setHours(23, 59, 59, 999);
+
+  if (requestDate > today) {
+    throw new Error('Date cannot be in the future.');
   }
-  const data = await query.find().sort({ [sortBy]: sortOrder });
-  return data;
+
+  const [year, monthIndex] = date.split('-');
+  const startOfMonth = new Date(year, monthIndex - 1, 1);
+  const endOfMonth = new Date(year, monthIndex, 0);
+
+  const logs = await waterCollection.find({
+    userId,
+    date: { $gte: startOfMonth, $lte: endOfMonth },
+  });
+
+  const user = await UserCollection.findById(userId);
+  const dailyNorm = user.dailyNorm || 1500;
+
+  const groupedByDay = logs.reduce((acc, log) => {
+    const day = new Date(log.date).toISOString().split('T')[0];
+    if (!acc[day]) {
+      acc[day] = { totalVolume: 0, totalGlasses: 0, count: 0 };
+    }
+    acc[day].totalVolume += log.volume;
+    acc[day].count++;
+    return acc;
+  }, {});
+
+  const result = Object.keys(groupedByDay).map((day) => {
+    const { totalVolume, count } = groupedByDay[day];
+    const consumedPercentage = ((totalVolume / dailyNorm) * 100).toFixed(0);
+    return {
+      date: date,
+      dailyNorma: `${(dailyNorm / 1000).toFixed(1)} L`,
+      consumedPercentage: `${consumedPercentage}%`,
+      numberGlasses: count,
+    };
+  });
+
+  result.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  return result;
 };
