@@ -49,21 +49,17 @@ export const patchGlassController = async (req, res) => {
 };
 
 export const getDailyController = async (req, res, next) => {
-  const { userId } = req.params;
+  const { _id } = req.user;
   const { date } = req.body;
-
-  if (!userId) {
-    return res.status(400).json({ message: 'User ID is required.' });
-  }
 
   if (!date) {
     return res.status(400).json({ message: 'Date is required.' });
   }
-  const dailyData = await waterServices.getDaily(userId, date);
+  const dailyData = await waterServices.getDaily(_id, date);
 
   if (dailyData.logs.length === 0) {
     return res.status(404).json({
-      message: `No water logs found for user ${userId} on date ${date}`,
+      message: `No water logs found for user ${_id} on date ${date}`,
     });
   }
   res.status(200).json(dailyData);
