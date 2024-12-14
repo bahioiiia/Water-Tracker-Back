@@ -2,16 +2,10 @@ import createHttpError from 'http-errors';
 
 import * as waterServices from '../services/water.js';
 
-import { parseSortParams } from '../utils/parseSortParams.js';
-import { sortByList } from '../db/models/Water.js';
-import { parseFilterParams } from '../utils/parseFilterParams.js';
-
-// import { env } from '../utils/env.js';
-
 export const addGlassController = async (req, res) => {
   const { _id: userId } = req.user;
-
   const data = await waterServices.addGlass({ ...req.body, userId });
+
   res.status(201).json({
     status: 201,
     message: 'Successfully created a glass of water!',
@@ -22,6 +16,7 @@ export const addGlassController = async (req, res) => {
 export const deleteGlassController = async (req, res) => {
   const { glassId } = req.params;
   const { _id: userId } = req.user;
+
   const data = await waterServices.deleteGlass(glassId, userId);
   if (!data) {
     throw createHttpError(404, `Glass id:${glassId} not found`);
