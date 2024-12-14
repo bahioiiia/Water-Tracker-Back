@@ -52,7 +52,6 @@ export const getDaily = async (userId, date) => {
   const consumedPercentage = ((totalWater / dailyNorm) * 100).toFixed(0);
 
   return {
-    userId,
     date: date,
     dailyNorma: `${(dailyNorm / 1000).toFixed(1)} L`,
     totalWater: `${(totalWater / 1000).toFixed(1)} L`,
