@@ -1,16 +1,9 @@
 type: object
 required:
-  - _id
-  - name
   - email
-  - gende
+  - gender
   - dailyNorm
-  - photo
 properties:
-  _id:
-    description: "User id"
-    type: string
-    example: 65e4decdd286b30065d54af9
   name:
     description: "User name"
     type: string
@@ -19,10 +12,14 @@ properties:
     description: "User email"
     type: string
     example: 'world@gmail.com'
-  gende:
+  gender:
     description: "User gender"
     type: string
     enum: ['Woman', 'Man']
+  dailyNorm:
+    description: "User dailyNorm"
+    type: string
+    example: "1500 ml"
   photo:
     description: "Link to user photo"
     type: string

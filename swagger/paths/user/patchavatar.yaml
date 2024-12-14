@@ -1,10 +1,22 @@
 tags:
   - User
-summary: Get list of user
-operationId: getUser
-description: 'Get list of users with this endpoint'
+summary: Patch avatar of user
+operationId: patchAvatar
+description: 'Patch user avatar with this endpoint'
 security:
   - bearerAuth: []
+requestBody:
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        required:
+          - avatar
+        properties:
+          avatar:
+            description: "Avatar user"
+            type: string
+            format: string
 responses:
   '200':
     description: Successfully found user!
@@ -26,15 +38,15 @@ responses:
             data:
               type: array
               items:
-                $ref: '../../components/schemas/user/user.yaml'
+                $ref: ../../components/schemas/user/avatar.yaml
               required:
                 - data
                 - name
                 - email
+                - gende
   '401':
     $ref: '../../components/responses/401.yaml'
   '404':
     $ref: '../../components/responses/404.yaml'
   '500':
     $ref: '../../components/responses/500.yaml'
-

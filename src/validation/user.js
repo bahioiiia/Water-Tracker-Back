@@ -1,12 +1,14 @@
 import Joi from 'joi';
-// import { typeContacts } from '../constants/contacts.js';
 import { emailRegexp, userGender } from '../constants/users.js';
 
 export const userUpdateSchema = Joi.object({
-  name: Joi.string().min(8).max(20),
+  name: Joi.string().min(2).max(32),
   gender: Joi.string().valid(...userGender),
   email: Joi.string().min(3).max(20).pattern(emailRegexp),
-  password: Joi.string().min(3).max(20),
-  newpassword: Joi.string().min(8).max(20),
-  // dailyNorm: Joi.number().less(15000),
+  password: Joi.string().min(8).max(64),
+  newpassword: Joi.string().min(8).max(64),
+});
+
+export const dailyNormUpdateSchema = Joi.object({
+  dailyNorm: Joi.number().min(50).max(15000),
 });

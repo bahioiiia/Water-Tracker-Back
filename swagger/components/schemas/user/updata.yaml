@@ -1,0 +1,26 @@
+type: object
+required:
+  - email
+  - gender
+  - dailyNorm
+properties:
+  name:
+    description: "User name"
+    type: string
+    example: 'Joy'
+  email:
+    description: "User email"
+    type: string
+    example: 'world@gmail.com'
+  gender:
+    description: "User gender"
+    type: string
+    enum: ['Woman', 'Man']
+  dailyNorm:
+    description: "User dailyNorm"
+    type: string
+    example: "1500 ml"
+  photo:
+    description: "Link to user photo"
+    type: string
+    example: https://image/upload/image.jpg

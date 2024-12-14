@@ -1,32 +1,22 @@
 tags:
   - User
-summary: Patch list of user
-operationId: patchUser
-description: 'Patch user with this endpoint'
+summary: Patch updata dailyNorm
+operationId: patchUpdataDaily
+description: 'Patch updata dailyNorm with this endpoint'
 security:
   - bearerAuth: []
-parameters:
-  - in: query
-    name: name
-    schema:
-      type: string
-    example: Joy
-  - in: query
-    name: email
-    schema:
-      type: string
-      example: 'world@gmail.com'
-  - in: query
-    name: gender
-    schema:
-      type: string
-      enum: ['Woman', 'Man']
-      example: 'Woman'    
-  - in: query
-    name: newpassword
-    schema:
-      type: string
-      example: 54321
+requestBody:
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        required:
+          - dailyNorm
+        properties:
+          dailyNorm:
+            description: "User dailyNorm"
+            type: string
+            example: "1250 ml"
 responses:
   '200':
     description: Successfully found user!
@@ -48,13 +38,13 @@ responses:
             data:
               type: array
               items:
-                $ref: ../../components/schemas/user.yaml
+                $ref: ../../components/schemas/user/dailyNorm.yaml
               required:
                 - data
                 - name
                 - email
                 - gende
-                - password
+                - dailyNorm
   '401':
     $ref: '../../components/responses/401.yaml'
   '404':

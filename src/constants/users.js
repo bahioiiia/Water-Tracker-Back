@@ -4,4 +4,4 @@ export const accessTokenLifetime = 1000 * 60 * 30; //ms:min:hr:dd * qty
 
 export const refreshTokenLifetime = 1000 * 60 * 60 * 24 * 30;
 
-export const userGender = [`woman`, `man`];
+export const userGender = [`Woman`, `Man`];
