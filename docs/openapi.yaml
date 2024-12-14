@@ -21,9 +21,15 @@ paths:
   /user:
     get:
       $ref: ../swagger/paths/user/get.yaml
+  /user/updata:
+    patch:
+      $ref: ../swagger/paths/user/patchupdata.yaml
   /user/avatar:
     patch:
-      $ref: ../swagger/paths/user/patch.yaml
+      $ref: ../swagger/paths/user/patchavatar.yaml
+  /user/daily:
+    patch:
+      $ref: ../swagger/paths/user/patchdaily.yaml
   /auth/signup:
     post:
       $ref: ../swagger/paths/auth/signup/post.yaml
@@ -33,15 +39,12 @@ paths:
   /auth/logout:
     post:
       $ref: ../swagger/paths/auth/logout/post.yaml
-  # /auth/refresh:
-  #   post:
-  #     $ref: ../swagger/paths/auth/refresh/post.yaml
   /water/glass:
     post:
       $ref: ../swagger/paths/water/post.yaml
     patch:
       $ref: ../swagger/paths/water/patch.yaml
-  /water/glass/{id}:
+  /water/glass/{glassId}:
     delete:
       $ref: ../swagger/paths/water/{id}/delete.yaml
 components:

@@ -7,7 +7,7 @@ security:
   - bearerAuth: []
 parameters:
   - in: path
-    name: id
+    name: glassId
     required: true
     schema:
       type: string

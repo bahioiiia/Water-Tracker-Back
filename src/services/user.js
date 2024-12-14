@@ -3,32 +3,83 @@ import bckrypt from 'bcrypt';
 
 
 //  вся логіка запитів 
-export const getUser = async (user) => {
-  const data = await UserCollection.find(user);
-return { data };
+export const getUser = async (payload) => {
+  const data = await UserCollection.findOne(payload);
+  return {
+      name: data.name,
+      email: data.email,
+      gender: data.gender,
+      dailyNorm: data.dailyNorm,
+      avatarUrl: data.avatarUrl,
+    };
 };
 
-export const patchAvatar = async (user, photo) => {
-  const data = await UserCollection.findOneAndUpdate(
-    user,
-    { photo: photo },
-    { new: true },
-  ); // new: true повернути оновлений об'єкт
-  return data;
-}; 
-
 export const patchUser = async (user, body) => {
-    const newpassword = body.newpassword;
-  
+  const newpassword = body.newpassword;
+  const newDailyNorm = body.dailyNorm;
+
   if (newpassword) {
     const hashPassword = await bckrypt.hash(newpassword, 10);
-    const data = await UserCollection.findOneAndUpdate(user, { ...body, password: hashPassword }, { new: true },);
-  return data;
+    const data = await UserCollection.findOneAndUpdate(
+      user,
+      { ...body, password: hashPassword },
+      { new: true },
+    );
+    return {
+      name: data.name,
+      email: data.email,
+      gender: data.gender,
+      dailyNorm: data.dailyNorm,
+      avatarUrl: data.avatarUrl,
+    };
   }
-  
-  const data = await UserCollection.findOneAndUpdate(user,{ ...body},{ new: true },);
-return data;
+
+  if (newDailyNorm) {
+    const data = await UserCollection.findOneAndUpdate(
+      user,
+      { ...body, dailyNorm: newDailyNorm },
+      { new: true },
+    );
+    return {
+      name: data.name,
+      email: data.email,
+      gender: data.gender,
+      dailyNorm: data.dailyNorm,
+      avatarUrl: data.avatarUrl,
+    };
+  }
+
+  const data = await UserCollection.findOneAndUpdate(
+    user,
+    { ...body },
+    { new: true },
+  );
+  return {
+      name: data.name,
+      email: data.email,
+      gender: data.gender,
+      dailyNorm: data.dailyNorm,
+      avatarUrl: data.avatarUrl,
+    };
 }; 
+
+
+export const patchAvatar = async (user, avatarUrl) => {
+  const data = await UserCollection.findOneAndUpdate(
+    user,
+    { avatarUrl: avatarUrl },
+    { new: true },
+  );
+  return {
+      name: data.name,
+      email: data.email,
+      gender: data.gender,
+      dailyNorm: data.dailyNorm,
+      avatarUrl: data.avatarUrl,
+    };
+}; 
+
+
 
 
 

@@ -19,7 +19,12 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    photo: {
+    gender: {
+      type: String,
+      default: `Woman`,
+      required: true,
+    },
+    avatarUrl: {
       type: String,
     },
     dailyNorm: {

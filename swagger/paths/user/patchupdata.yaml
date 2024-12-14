@@ -1,0 +1,63 @@
+tags:
+  - User
+summary: Patch updata list of user
+operationId: patchUpdata
+description: 'Patch updata user with this endpoint'
+security:
+  - bearerAuth: []
+requestBody:
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        properties:
+          name: 
+            description: "User name"
+            type: string
+            example: "Joy"
+          email:
+            description: "User email"
+            type: string
+            example: "world@gmail.com"
+          gender:
+            description: "User gender"
+            enum: ['Woman', 'Man']
+            example: "Woman"
+          newpassword:
+            description: "User new password"
+            type: string
+            example: "54321"
+responses:
+  '200':
+    description: Successfully found user!
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfull find user!
+            data:
+              type: array
+              items:
+                $ref: ../../components/schemas/user/updata.yaml
+              required:
+                - data
+                - name
+                - email
+                - gende
+                - password
+  '401':
+    $ref: '../../components/responses/401.yaml'
+  '404':
+    $ref: '../../components/responses/404.yaml'
+  '500':
+    $ref: '../../components/responses/500.yaml'
