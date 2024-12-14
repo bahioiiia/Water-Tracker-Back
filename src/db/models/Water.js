@@ -2,25 +2,32 @@ import { Schema, model } from 'mongoose';
 
 import { handleSaveError, setUpdateSettings } from './hooks.js';
 
-const waterSchema = new Schema({
+const waterSchema = new Schema(
+  {
     date: {
-        type: Date,
-        required: true,
+      type: Date,
+      required: true,
     },
     volume: {
-        type: Number,
-        required: true,
+      type: Number,
+      required: true,
     },
-    curDailyNorm: {
-        type: Number,
-        required: true,
+    dailyNorm: {
+      type: Number,
+      required: true,
+    },
+    newDailyNorm: {
+      type: Number,
+      required: false,
     },
     userId: {
-        type: Schema.Types.ObjectId,
-        ref: 'user',
-        required: true,
+      type: Schema.Types.ObjectId,
+      ref: 'user',
+      required: true,
     },
-}, { versionKey: false, timestamps: true });
+  },
+  { versionKey: false, timestamps: true },
+);
 
 waterSchema.post('save', handleSaveError);
 waterSchema.pre('findOneAndUpdate', setUpdateSettings);
