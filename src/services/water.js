@@ -1,8 +1,18 @@
 import waterCollection from '../db/models/Water.js';
 import UserCollection from '../db/models/User.js';
 
-export const addGlass = async (payload) =>
-  await waterCollection.create(payload);
+export const addGlass = async ({user, dailyNorm, userId, body, newDailyNorm}) => {
+  
+  if (!newDailyNorm) {
+      const data = await waterCollection.create({...body, dailyNorm: dailyNorm, userId: userId});
+    return data;
+  }
+
+  const data = await waterCollection.create({ ...body, dailyNorm: newDailyNorm, userId: userId });
+  const newData = await UserCollection.findOneAndUpdate(user, { ...body, dailyNorm: newDailyNorm }, { new: true });
+  
+  return data;
+};
 
 export const patchGlass = async (glassId, userId, payload, options = {}) => {
   const rawResult = await waterCollection.findOneAndUpdate(
@@ -19,6 +29,8 @@ export const patchGlass = async (glassId, userId, payload, options = {}) => {
 
 export const deleteGlass = async (contactId, userId) =>
   await waterCollection.findOneAndDelete({ _id: contactId, userId });
+
+
 
 export const getDaily = async (userId, date) => {
   const requestDate = new Date(date);
@@ -46,6 +58,7 @@ export const getDaily = async (userId, date) => {
   const totalWater = logs.reduce((sum, log) => sum + log.volume, 0);
 
   const user = await UserCollection.findById(userId);
+  // console.log(`user`, user);
 
   const dailyNorm = user.dailyNorm || 1500; //default Daily Norm
 

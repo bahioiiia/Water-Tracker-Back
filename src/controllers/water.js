@@ -3,8 +3,12 @@ import createHttpError from 'http-errors';
 import * as waterServices from '../services/water.js';
 
 export const addGlassController = async (req, res) => {
-  const { _id: userId } = req.user;
-  const data = await waterServices.addGlass({ ...req.body, userId });
+  const user = req.user;
+  const { _id: userId, dailyNorm } = req.user;
+  const newDailyNorm = req.body.dailyNorm;
+  const body = req.body;
+  
+  const data = await waterServices.addGlass({ user, body, userId, dailyNorm, newDailyNorm});
 
   res.status(201).json({
     status: 201,
