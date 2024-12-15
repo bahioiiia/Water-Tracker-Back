@@ -20,4 +20,5 @@ waterRouter.delete('/glass/:glassId', isValidGlassId, ctrlWrapper(waterControlle
 waterRouter.get('/daily/', ctrlWrapper(waterController.getDailyController));
 waterRouter.get('/monthly', ctrlWrapper(waterController.getMonthlyController));
 
+
 export default waterRouter;
