@@ -1,0 +1,23 @@
+type: object
+required:
+  - numberGlasses
+  - date
+  - dailyNorma
+  - consumedPercentage
+properties:
+  date:
+    description: "Water date"
+    type: string
+    example: '2024-12-14T23:10'
+  dailyNorma:
+    description: "Water dailyNorma"
+    type: string
+    example: '2.5 L'
+  numberGlasses:
+    description: "Water numberGlasses"
+    type: number
+    example: '4'
+  consumedPercentage:
+    description: "Water consumedPercentage"
+    type: number
+    example: '83%'

@@ -39,9 +39,16 @@ paths:
   /auth/logout:
     post:
       $ref: ../swagger/paths/auth/logout/post.yaml
+  /water/daily:
+    get:
+      $ref: ../swagger/paths/water/getdaily.yaml
+  /water/monthly:
+    get:
+      $ref: ../swagger/paths/water/getmonthly.yaml
   /water/glass:
     post:
       $ref: ../swagger/paths/water/post.yaml
+  /water/{glassId}:
     patch:
       $ref: ../swagger/paths/water/patch.yaml
   /water/glass/{glassId}:

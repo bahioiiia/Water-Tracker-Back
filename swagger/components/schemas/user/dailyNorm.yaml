@@ -18,8 +18,8 @@ properties:
     enum: ['Woman', 'Man']
   dailyNorm:
     description: "User dailyNorm"
-    type: string
-    example: "1500 ml"
+    type: number
+    example: "1500"
   photo:
     description: "Link to user photo"
     type: string

@@ -10,8 +10,8 @@ parameters:
     name: glassId
     required: true
     schema:
-      type: string
-      example: '250 ml'
+      type: number
+      example: '65e4decdd286b30065d54af9'
 responses:
   '204':
     description: Delete found water!

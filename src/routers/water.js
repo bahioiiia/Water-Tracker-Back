@@ -14,10 +14,13 @@ waterRouter.use(authenticate);
 
 waterRouter.post('/glass', validateBody(glassAddSchema), ctrlWrapper(waterController.addGlassController));
 
-waterRouter.patch('/glass/:glassId', isValidGlassId, validateBody(glassUpdateSchema), ctrlWrapper(waterController.patchGlassController));
+//  змінив шлях т.я. не допустимо два одинакові шляхи в свагері
+waterRouter.patch('/:glassId', isValidGlassId, validateBody(glassUpdateSchema), ctrlWrapper(waterController.patchGlassController));
 waterRouter.delete('/glass/:glassId', isValidGlassId, ctrlWrapper(waterController.deleteGlassController));
 
-waterRouter.get('/daily/', ctrlWrapper(waterController.getDailyController));
+
+//  видалив / т.я. не допустимий шлях в свагері
+waterRouter.get('/daily', ctrlWrapper(waterController.getDailyController));
 waterRouter.get('/monthly', ctrlWrapper(waterController.getMonthlyController));
 
 export default waterRouter;

@@ -125,6 +125,7 @@
                   },
                   "gender": {
                     "description": "User gender",
+                    "type": "string",
                     "enum": [
                       "Woman",
                       "Man"
@@ -297,9 +298,9 @@
                 ],
                 "properties": {
                   "dailyNorm": {
-                    "description": "User dailyNorm",
-                    "type": "string",
-                    "example": "1250 ml"
+                    "description": "User dailyNorm (example: 1250)",
+                    "type": "number",
+                    "example": "1250"
                   }
                 }
               }
@@ -552,6 +553,152 @@
         }
       }
     },
+    "/water/daily": {
+      "get": {
+        "tags": [
+          "Water"
+        ],
+        "summary": "Get Daily of water",
+        "operationId": "getDaily",
+        "description": "Get Daily of waters with this endpoint",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "date",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "2024-12-14T23:10"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully found user!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Successfull find user!"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/getdaily"
+                      },
+                      "required": [
+                        "data",
+                        "name",
+                        "email"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/water/monthly": {
+      "get": {
+        "tags": [
+          "Water"
+        ],
+        "summary": "Get Monthly of water",
+        "operationId": "getMonthly",
+        "description": "Get Monthly of waters with this endpoint",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "date",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "2024-12-14T23:10"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully found user!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Successfull find user!"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/getmonthly"
+                      },
+                      "required": [
+                        "data",
+                        "name",
+                        "email"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
     "/water/glass": {
       "post": {
         "tags": [
@@ -570,16 +717,16 @@
             "in": "query",
             "name": "glass",
             "schema": {
-              "type": "string"
+              "type": "number"
             },
-            "example": "250 ml"
+            "example": "250"
           },
           {
             "in": "query",
-            "name": "data",
+            "name": "date",
             "schema": {
               "type": "string",
-              "example": "newData"
+              "example": "2024-12-14T23:10"
             }
           }
         ],
@@ -611,7 +758,7 @@
                       },
                       "required": [
                         "glass",
-                        "data"
+                        "date"
                       ]
                     }
                   }
@@ -626,7 +773,9 @@
             "$ref": "#/components/responses/500"
           }
         }
-      },
+      }
+    },
+    "/water/{glassId}": {
       "patch": {
         "tags": [
           "Water"
@@ -641,19 +790,30 @@
         ],
         "parameters": [
           {
-            "in": "query",
-            "name": "glass",
+            "in": "path",
+            "name": "glassId",
+            "required": true,
             "schema": {
-              "type": "string"
-            },
-            "example": "250 ml"
+              "type": "number",
+              "example": "65e4decdd286b30065d54af9"
+            }
           },
           {
             "in": "query",
-            "name": "data",
+            "name": "volume",
+            "required": true,
             "schema": {
               "type": "string",
-              "example": "Data"
+              "example": "3600"
+            }
+          },
+          {
+            "in": "query",
+            "name": "date",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "2024-12-14T23:10"
             }
           }
         ],
@@ -684,7 +844,7 @@
                         "$ref": "#/components/schemas/water"
                       },
                       "required": [
-                        "data"
+                        "date"
                       ]
                     }
                   }
@@ -726,8 +886,8 @@
             "name": "glassId",
             "required": true,
             "schema": {
-              "type": "string",
-              "example": "250 ml"
+              "type": "number",
+              "example": "65e4decdd286b30065d54af9"
             }
           }
         ],
@@ -911,8 +1071,8 @@
           },
           "dailyNorm": {
             "description": "User dailyNorm",
-            "type": "string",
-            "example": "1500 ml"
+            "type": "number",
+            "example": "1500"
           },
           "photo": {
             "description": "Link to user photo",
@@ -942,22 +1102,101 @@
           }
         }
       },
+      "getdaily": {
+        "type": "object",
+        "required": [
+          "numberGlasses",
+          "date",
+          "dailyNorma",
+          "totalWater",
+          "consumedPercentage",
+          "logs"
+        ],
+        "properties": {
+          "date": {
+            "description": "Water date",
+            "type": "string",
+            "example": "2024-12-14T23:10"
+          },
+          "dailyNorma": {
+            "description": "Water dailyNorma",
+            "type": "string",
+            "example": "2.5 L"
+          },
+          "totalWater": {
+            "description": "Water totalWater",
+            "type": "string",
+            "example": "2.0 L"
+          },
+          "numberGlasses": {
+            "description": "Water numberGlasses",
+            "type": "number",
+            "example": "4"
+          },
+          "consumedPercentage": {
+            "description": "Water consumedPercentage",
+            "type": "number",
+            "example": "83%"
+          },
+          "logs": {
+            "description": "Water data",
+            "type": "array"
+          }
+        }
+      },
+      "getmonthly": {
+        "type": "object",
+        "required": [
+          "numberGlasses",
+          "date",
+          "dailyNorma",
+          "consumedPercentage"
+        ],
+        "properties": {
+          "date": {
+            "description": "Water date",
+            "type": "string",
+            "example": "2024-12-14T23:10"
+          },
+          "dailyNorma": {
+            "description": "Water dailyNorma",
+            "type": "string",
+            "example": "2.5 L"
+          },
+          "numberGlasses": {
+            "description": "Water numberGlasses",
+            "type": "number",
+            "example": "4"
+          },
+          "consumedPercentage": {
+            "description": "Water consumedPercentage",
+            "type": "number",
+            "example": "83%"
+          }
+        }
+      },
       "water": {
         "type": "object",
         "required": [
-          "glass",
-          "data"
+          "date",
+          "volume",
+          "dailyNorm"
         ],
         "properties": {
-          "glass": {
-            "description": "Water glass",
+          "date": {
+            "description": "Water date",
             "type": "string",
-            "example": "250 ml"
+            "example": "2024-12-14T23:10"
           },
-          "data": {
-            "description": "Water data",
-            "type": "string",
-            "example": "2024-11-02 11:00"
+          "volume": {
+            "description": "Water volume",
+            "type": "number",
+            "example": "3600"
+          },
+          "dailyNorm": {
+            "description": "Water dailyNorm",
+            "type": "number",
+            "example": "2500"
           }
         }
       }

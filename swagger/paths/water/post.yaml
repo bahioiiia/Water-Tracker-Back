@@ -9,13 +9,13 @@ parameters:
   - in: query
     name: glass
     schema:
-      type: string
-    example: "250 ml"
+      type: number
+    example: "250"
   - in: query
-    name: data
+    name: date
     schema:
       type: string
-      example: 'newData'
+      example: '2024-12-14T23:10'
 responses:
   '200':
     description: Successfully found water!
@@ -40,7 +40,7 @@ responses:
                 $ref: ../../components/schemas/water/water.yaml
               required:
                 - glass
-                - data
+                - date
   '401':
     $ref: '../../components/responses/401.yaml'
   '500':
