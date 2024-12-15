@@ -10,7 +10,7 @@ parameters:
     name: glassId
     required: true
     schema:
-      type: number
+      type: string
       example: '65e4decdd286b30065d54af9'
 responses:
   '204':
