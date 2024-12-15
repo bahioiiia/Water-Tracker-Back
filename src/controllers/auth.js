@@ -3,6 +3,8 @@ import { requestResetToken, resetPassword } from '../services/auth.js';
 
 import { generateAuthUrl } from '../utils/googleOAuth2.js';
 
+import UserCollection from "../db/models/User.js";
+
 const setupSession = (res, session) => {
     const { _id, refreshToken, refreshTokenValidUntil } = session;
 
@@ -37,11 +39,20 @@ export const loginController = async (req, res) => {
 
     setupSession(res, session);
     
+    const { email } = req.body;
+    const user = await UserCollection.findOne({ email });
+
     res.json({
         status: 200,
         message: "Successfully login user",
         data: {
             accessToken: session.accessToken,
+            user: {
+                email: user.email,
+                name: user.name,
+                gender: user.gender,
+                avatar: user.avatarUrl,
+            }
         }
     });
 };
