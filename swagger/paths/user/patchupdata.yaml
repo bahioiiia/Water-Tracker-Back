@@ -21,6 +21,7 @@ requestBody:
             example: "world@gmail.com"
           gender:
             description: "User gender"
+            type: string
             enum: ['Woman', 'Man']
             example: "Woman"
           newpassword:

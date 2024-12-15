@@ -6,16 +6,24 @@ description: 'Patch waters with this endpoint'
 security:
   - bearerAuth: []
 parameters:
+  - in: path
+    name: glassId
+    required: true
+    schema:
+      type: number
+      example: '65e4decdd286b30065d54af9'
   - in: query
-    name: glass
+    name: volume
+    required: true
     schema:
       type: string
-    example: "250 ml"
+      example: '3600'
   - in: query
-    name: data
+    name: date
+    required: true
     schema:
       type: string
-      example: 'Data'
+      example: '2024-12-14T23:10'
 responses:
   '200':
     description: Successfully found waters!
@@ -39,7 +47,7 @@ responses:
               items:
                 $ref: ../../components/schemas/water/water.yaml
               required:
-                - data
+                - date
   '400':
     $ref: '../../components/responses/400.yaml'
   '401':

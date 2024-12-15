@@ -17,7 +17,7 @@ waterRouter.post('/glass', validateBody(glassAddSchema), ctrlWrapper(waterContro
 waterRouter.patch('/glass/:glassId', isValidGlassId, validateBody(glassUpdateSchema), ctrlWrapper(waterController.patchGlassController));
 waterRouter.delete('/glass/:glassId', isValidGlassId, ctrlWrapper(waterController.deleteGlassController));
 
-waterRouter.get('/daily/', ctrlWrapper(waterController.getDailyController));
+waterRouter.get('/daily', ctrlWrapper(waterController.getDailyController));
 waterRouter.get('/monthly', ctrlWrapper(waterController.getMonthlyController));
 
 

@@ -1,22 +1,17 @@
 tags:
-  - User
-summary: Patch updata dailyNorm
-operationId: patchUpdataDaily
-description: 'Patch updata dailyNorm with this endpoint'
+  - Water
+summary: Get Monthly of water
+operationId: getMonthly
+description: 'Get Monthly of waters with this endpoint'
 security:
   - bearerAuth: []
-requestBody:
-  content:
-    multipart/form-data:
+parameters:
+    - in: query
+      name: date
+      required: true
       schema:
-        type: object
-        required:
-          - dailyNorm
-        properties:
-          dailyNorm:
-            description: "User dailyNorm (example: 1250)"
-            type: number
-            example: "1250"
+        type: string
+        example: '2024-12-14T23:10'
 responses:
   '200':
     description: Successfully found user!
@@ -38,16 +33,15 @@ responses:
             data:
               type: array
               items:
-                $ref: ../../components/schemas/user/dailyNorm.yaml
+                $ref: ../../components/schemas/water/getmonthly.yaml
               required:
                 - data
                 - name
                 - email
-                - gende
-                - dailyNorm
   '401':
     $ref: '../../components/responses/401.yaml'
   '404':
     $ref: '../../components/responses/404.yaml'
   '500':
     $ref: '../../components/responses/500.yaml'
+
