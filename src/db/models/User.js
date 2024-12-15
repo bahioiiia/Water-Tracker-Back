@@ -8,6 +8,8 @@ const userSchema = new Schema(
   {
     name: {
       type: String,
+      default: `User`,
+      required: true,
     },
     email: {
       type: String,
@@ -26,6 +28,8 @@ const userSchema = new Schema(
     },
     avatarUrl: {
       type: String,
+      default: `null`,
+      required: true,
     },
     dailyNorm: {
       type: Number,

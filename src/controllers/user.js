@@ -39,7 +39,6 @@ export const patchUserController = async (req, res) => {
 
 export const avatarUpdateController = async (req, res) => {
   const user = req.user;
-
   let avatarUrl = null; //  пуста
 
   if (req.file) {
@@ -50,8 +49,8 @@ export const avatarUpdateController = async (req, res) => {
       avatarUrl = path.join(req.file.filename);
     }
   }
-  const body = req.body;
-  const data = await patchAvatar(user, avatarUrl, body);
+  
+  const data = await patchAvatar(user, avatarUrl);
 
   if (!data) {
     throw createHttpError(404, `Not found`);
