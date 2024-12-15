@@ -1,16 +1,8 @@
 import waterCollection from '../db/models/Water.js';
 import UserCollection from '../db/models/User.js';
 
-export const addGlass = async ({user, dailyNorm, userId, body, newDailyNorm}) => {
-  
-  if (!newDailyNorm) {
-      const data = await waterCollection.create({...body, dailyNorm: dailyNorm, userId: userId});
-    return data;
-  }
-
-  const data = await waterCollection.create({ ...body, dailyNorm: newDailyNorm, userId: userId });
-  const newData = await UserCollection.findOneAndUpdate(user, { ...body, dailyNorm: newDailyNorm }, { new: true });
-  
+export const addGlass = async ({ dailyNorm, userId, body}) => {
+    const data = await waterCollection.create({ ...body, dailyNorm: dailyNorm, userId: userId, });
   return data;
 };
 

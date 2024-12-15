@@ -1,17 +1,19 @@
 type: object
 required:
-  - glass
-  - data
+  - date
+  - volume
+  - dailyNorm
 properties:
-  glass:
-    description: "Water glass"
+  date:
+    description: "Water date"
     type: string
-    example: '250 ml'
-  # volume:
-  #   description: "Water volume"
-  #   type: string
-  #   example: '1250 ml'
-  data:
-    description: "Water data"
-    type: string
-    example: '2024-11-02 11:00'
+    example: '2024-12-14T23:10'
+  volume:
+    description: "Water volume"
+    type: number
+    example: '3600'
+  dailyNorm:
+    description: "Water dailyNorm"
+    type: number
+    example: '2500'
+
