@@ -5,7 +5,7 @@ import * as waterServices from '../services/water.js';
 export const addGlassController = async (req, res) => {
   const { _id: userId, dailyNorm } = req.user;
   const body = req.body;
-  const data = await waterServices.addGlass({ body, userId, dailyNorm});
+  const data = await waterServices.addGlass({ body, userId, dailyNorm });
   res.status(201).json({
     status: 201,
     message: 'Successfully created a glass of water!',
@@ -50,11 +50,11 @@ export const getDailyController = async (req, res, next) => {
   }
   const dailyData = await waterServices.getDaily(_id, date);
 
-  if (dailyData.logs.length === 0) {
-    return res.status(404).json({
-      message: `No water logs found for user ${_id} on date ${date}`,
-    });
-  }
+  // if (dailyData.logs.length === 0) {
+  //   return res.status(404).json({
+  //     message: `No water logs found for user ${_id} on date ${date}`,
+  //   });
+  // }
   res.status(200).json(dailyData);
 };
 
@@ -68,11 +68,11 @@ export const getMonthlyController = async (req, res) => {
 
   const monthlyData = await waterServices.getMonthly(_id, date);
 
-  if (monthlyData.length === 0) {
-    return res.status(404).json({
-      message: `No water logs found for user ${_id} on date ${date}`,
-    });
-  }
+  // if (monthlyData.length === 0) {
+  //   return res.status(404).json({
+  //     message: `No water logs found for user ${_id} on date ${date}`,
+  //   });
+  // }
 
   res.status(200).json(monthlyData);
 };
