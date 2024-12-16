@@ -32,69 +32,7 @@
     }
   ],
   "paths": {
-    "/user": {
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "summary": "Get list of user",
-        "operationId": "getUser",
-        "description": "Get list of users with this endpoint",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully found user!",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "status",
-                    "message",
-                    "data"
-                  ],
-                  "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 200
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Successfull find user!"
-                    },
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/user"
-                      },
-                      "required": [
-                        "data",
-                        "name",
-                        "email"
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/401"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      }
-    },
-    "/user/updata": {
+    "/user/update": {
       "patch": {
         "tags": [
           "User"
@@ -358,6 +296,68 @@
         }
       }
     },
+    "/user": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get list of user",
+        "operationId": "getUser",
+        "description": "Get list of users with this endpoint",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully found user!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Successfull find user!"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/user"
+                      },
+                      "required": [
+                        "data",
+                        "name",
+                        "email"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
     "/auth/signup": {
       "post": {
         "tags": [
@@ -553,6 +553,224 @@
         }
       }
     },
+    "/water/glass": {
+      "post": {
+        "tags": [
+          "Water"
+        ],
+        "summary": "Post list of water",
+        "operationId": "postWater",
+        "description": "Post list of water with this endpoint",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "glass",
+            "schema": {
+              "type": "number"
+            },
+            "example": "250"
+          },
+          {
+            "in": "query",
+            "name": "date",
+            "schema": {
+              "type": "string",
+              "example": "2024-12-14T23:10"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully found water!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Successfull find water!"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/water"
+                      },
+                      "required": [
+                        "glass",
+                        "date"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/water/glass/{glassId}": {
+      "patch": {
+        "tags": [
+          "Water"
+        ],
+        "summary": "Patch list of water",
+        "operationId": "patchWater",
+        "description": "Patch waters with this endpoint",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "glassId",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "65e4decdd286b30065d54af9"
+            }
+          },
+          {
+            "in": "query",
+            "name": "volume",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "example": "3600"
+            }
+          },
+          {
+            "in": "query",
+            "name": "date",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "2024-12-14T23:10"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully found waters!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Successfull find waters!"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/water"
+                      },
+                      "required": [
+                        "date"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Water"
+        ],
+        "summary": "Delete water by glass",
+        "operationId": "deleteWater",
+        "description": "Get water by glassId",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "glassId",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "65e4decdd286b30065d54af9"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Delete found water!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
     "/water/daily": {
       "get": {
         "tags": [
@@ -698,226 +916,6 @@
           }
         }
       }
-    },
-    "/water/glass": {
-      "post": {
-        "tags": [
-          "Water"
-        ],
-        "summary": "Post list of water",
-        "operationId": "postWater",
-        "description": "Post list of water with this endpoint",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "in": "query",
-            "name": "glass",
-            "schema": {
-              "type": "number"
-            },
-            "example": "250"
-          },
-          {
-            "in": "query",
-            "name": "date",
-            "schema": {
-              "type": "string",
-              "example": "2024-12-14T23:10"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully found water!",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "status",
-                    "message",
-                    "data"
-                  ],
-                  "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 200
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Successfull find water!"
-                    },
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/water"
-                      },
-                      "required": [
-                        "glass",
-                        "date"
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/401"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      }
-    },
-    "/water/{glassId}": {
-      "patch": {
-        "tags": [
-          "Water"
-        ],
-        "summary": "Patch list of water",
-        "operationId": "patchWater",
-        "description": "Patch waters with this endpoint",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "glassId",
-            "required": true,
-            "schema": {
-              "type": "number",
-              "example": "65e4decdd286b30065d54af9"
-            }
-          },
-          {
-            "in": "query",
-            "name": "volume",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "example": "3600"
-            }
-          },
-          {
-            "in": "query",
-            "name": "date",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "example": "2024-12-14T23:10"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully found waters!",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "status",
-                    "message",
-                    "data"
-                  ],
-                  "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 200
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Successfull find waters!"
-                    },
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/water"
-                      },
-                      "required": [
-                        "date"
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/400"
-          },
-          "401": {
-            "$ref": "#/components/responses/401"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      }
-    },
-    "/water/glass/{glassId}": {
-      "delete": {
-        "tags": [
-          "Water"
-        ],
-        "summary": "Delete water by glass",
-        "operationId": "deleteWater",
-        "description": "Get water by glassId",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "in": "path",
-            "name": "glassId",
-            "required": true,
-            "schema": {
-              "type": "number",
-              "example": "65e4decdd286b30065d54af9"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Delete found water!",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "status",
-                    "message",
-                    "data"
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/401"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
-          "500": {
-            "$ref": "#/components/responses/500"
-          }
-        }
-      }
     }
   },
   "components": {
@@ -928,44 +926,6 @@
       }
     },
     "schemas": {
-      "user": {
-        "type": "object",
-        "required": [
-          "email",
-          "gender",
-          "dailyNorm"
-        ],
-        "properties": {
-          "name": {
-            "description": "User name",
-            "type": "string",
-            "example": "Joy"
-          },
-          "email": {
-            "description": "User email",
-            "type": "string",
-            "example": "world@gmail.com"
-          },
-          "gender": {
-            "description": "User gender",
-            "type": "string",
-            "enum": [
-              "Woman",
-              "Man"
-            ]
-          },
-          "dailyNorm": {
-            "description": "User dailyNorm",
-            "type": "string",
-            "example": "1500 ml"
-          },
-          "avatarUrl": {
-            "description": "Link to user avatarUrl",
-            "type": "string",
-            "example": "https://image/upload/image.jpg"
-          }
-        }
-      },
       "updata": {
         "type": "object",
         "required": [
@@ -1081,6 +1041,44 @@
           }
         }
       },
+      "user": {
+        "type": "object",
+        "required": [
+          "email",
+          "gender",
+          "dailyNorm"
+        ],
+        "properties": {
+          "name": {
+            "description": "User name",
+            "type": "string",
+            "example": "Joy"
+          },
+          "email": {
+            "description": "User email",
+            "type": "string",
+            "example": "world@gmail.com"
+          },
+          "gender": {
+            "description": "User gender",
+            "type": "string",
+            "enum": [
+              "Woman",
+              "Man"
+            ]
+          },
+          "dailyNorm": {
+            "description": "User dailyNorm",
+            "type": "string",
+            "example": "1500 ml"
+          },
+          "avatarUrl": {
+            "description": "Link to user avatarUrl",
+            "type": "string",
+            "example": "https://image/upload/image.jpg"
+          }
+        }
+      },
       "signup": {
         "type": "object",
         "required": [
@@ -1099,6 +1097,31 @@
             "description": "Login contacts token",
             "type": "string",
             "example": "nSu9mqGJzsaEGwx4nBXoHGykYumTCbEqUY6Xg5JB"
+          }
+        }
+      },
+      "water": {
+        "type": "object",
+        "required": [
+          "date",
+          "volume",
+          "dailyNorm"
+        ],
+        "properties": {
+          "date": {
+            "description": "Water date",
+            "type": "string",
+            "example": "2024-12-14T23:10"
+          },
+          "volume": {
+            "description": "Water volume",
+            "type": "number",
+            "example": "3600"
+          },
+          "dailyNorm": {
+            "description": "Water dailyNorm",
+            "type": "number",
+            "example": "2500"
           }
         }
       },
@@ -1172,31 +1195,6 @@
             "description": "Water consumedPercentage",
             "type": "number",
             "example": "83%"
-          }
-        }
-      },
-      "water": {
-        "type": "object",
-        "required": [
-          "date",
-          "volume",
-          "dailyNorm"
-        ],
-        "properties": {
-          "date": {
-            "description": "Water date",
-            "type": "string",
-            "example": "2024-12-14T23:10"
-          },
-          "volume": {
-            "description": "Water volume",
-            "type": "number",
-            "example": "3600"
-          },
-          "dailyNorm": {
-            "description": "Water dailyNorm",
-            "type": "number",
-            "example": "2500"
           }
         }
       }

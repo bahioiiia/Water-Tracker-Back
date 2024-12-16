@@ -42,10 +42,9 @@ paths:
   /water/glass:
     post:
       $ref: ../swagger/paths/water/post.yaml
-  /water/{glassId}:
+  /water/glass/{glassId}:
     patch:
       $ref: ../swagger/paths/water/patch.yaml
-  /water/glass/{glassId}:
     delete:
       $ref: ../swagger/paths/water/{id}/delete.yaml
   /water/daily:
