@@ -43,7 +43,7 @@ export const patchGlassController = async (req, res) => {
 
 export const getDailyController = async (req, res, next) => {
   const { _id } = req.user;
-  const { date } = req.body;
+  const { date } = req.query;
 
   if (!date) {
     return res.status(400).json({ message: 'Date is required.' });
@@ -60,7 +60,7 @@ export const getDailyController = async (req, res, next) => {
 
 export const getMonthlyController = async (req, res) => {
   const { _id } = req.user;
-  const { date } = req.body;
+  const { date } = req.query;
 
   if (!date) {
     return res.status(400).json({ message: 'Date is required.' });

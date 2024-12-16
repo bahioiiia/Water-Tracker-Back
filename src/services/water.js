@@ -22,8 +22,6 @@ export const patchGlass = async (glassId, userId, payload, options = {}) => {
 export const deleteGlass = async (contactId, userId) =>
   await waterCollection.findOneAndDelete({ _id: contactId, userId });
 
-
-
 export const getDaily = async (userId, date) => {
   const requestDate = new Date(date);
   const today = new Date();
@@ -32,9 +30,7 @@ export const getDaily = async (userId, date) => {
   if (requestDate > today) {
     throw new Error('Date cannot be in the future.');
   }
-  if (!date) {
-    throw new Error('Date is required.');
-  }
+
   const dayStart = new Date(date);
   dayStart.setHours(0, 0, 0, 0);
   const dayEnd = new Date(date);
@@ -50,7 +46,7 @@ export const getDaily = async (userId, date) => {
   const totalWater = logs.reduce((sum, log) => sum + log.volume, 0);
 
   const user = await UserCollection.findById(userId);
-  // console.log(`user`, user);
+  // console.log(user, user);
 
   const dailyNorm = user.dailyNorm || 1500; //default Daily Norm
 
@@ -58,8 +54,10 @@ export const getDaily = async (userId, date) => {
 
   return {
     date: date,
-    dailyNorma: `${(dailyNorm / 1000).toFixed(1)} L`,
-    totalWater: `${(totalWater / 1000).toFixed(1)} L`,
+    // dailyNorma: ${(dailyNorm / 1000).toFixed(1)} L,
+    // totalWater: ${(totalWater / 1000).toFixed(1)} L,
+    dailyNorma: dailyNorm,
+    totalWater,
     consumedPercentage: `${consumedPercentage}%`,
     numberGlasses: logs.length,
     logs: logs.map((log) => ({
@@ -107,7 +105,8 @@ export const getMonthly = async (userId, date) => {
     const consumedPercentage = ((totalVolume / dailyNorm) * 100).toFixed(0);
     return {
       date: date,
-      dailyNorma: `${(dailyNorm / 1000).toFixed(1)} L`,
+      // dailyNorma: ${(dailyNorm / 1000).toFixed(1)} L,
+      dailyNorma: dailyNorm,
       consumedPercentage: `${consumedPercentage}%`,
       numberGlasses: count,
     };
