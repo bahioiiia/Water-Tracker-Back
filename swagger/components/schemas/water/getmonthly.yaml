@@ -12,7 +12,7 @@ properties:
   dailyNorma:
     description: "Water dailyNorma"
     type: string
-    example: '2.5 L'
+    example: '2000'
   numberGlasses:
     description: "Water numberGlasses"
     type: number
