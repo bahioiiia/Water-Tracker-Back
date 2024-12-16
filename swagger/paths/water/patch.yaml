@@ -10,13 +10,13 @@ parameters:
     name: glassId
     required: true
     schema:
-      type: number
+      type: string
       example: '65e4decdd286b30065d54af9'
   - in: query
     name: volume
     required: true
     schema:
-      type: string
+      type: number
       example: '3600'
   - in: query
     name: date

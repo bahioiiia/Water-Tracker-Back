@@ -17,7 +17,7 @@ userRouter.use(authenticate);
 userRouter.get('/', ctrlWrapper(userController.getUserController));
 
 //  змінюється body user + newpassord
-userRouter.patch('/updata', validateBody(userUpdateSchema), ctrlWrapper(userController.patchUserController), );
+userRouter.patch('/update', validateBody(userUpdateSchema), ctrlWrapper(userController.patchUserController), );
 //  змінюється лише avatar
 userRouter.patch('/avatar', isValidUserId, upload.single('avatarUrl'), ctrlWrapper(userController.avatarUpdateController),);
 

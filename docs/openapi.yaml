@@ -18,10 +18,7 @@ servers:
   - url: http://localhost:3000
   - url: https://bo-o-woa.onrender.com
 paths:
-  /user:
-    get:
-      $ref: ../swagger/paths/user/get.yaml
-  /user/updata:
+  /user/update:
     patch:
       $ref: ../swagger/paths/user/patchupdata.yaml
   /user/avatar:
@@ -30,6 +27,9 @@ paths:
   /user/daily:
     patch:
       $ref: ../swagger/paths/user/patchdaily.yaml
+  /user:
+    get:
+      $ref: ../swagger/paths/user/get.yaml
   /auth/signup:
     post:
       $ref: ../swagger/paths/auth/signup/post.yaml
@@ -39,12 +39,6 @@ paths:
   /auth/logout:
     post:
       $ref: ../swagger/paths/auth/logout/post.yaml
-  /water/daily:
-    get:
-      $ref: ../swagger/paths/water/getdaily.yaml
-  /water/monthly:
-    get:
-      $ref: ../swagger/paths/water/getmonthly.yaml
   /water/glass:
     post:
       $ref: ../swagger/paths/water/post.yaml
@@ -54,6 +48,12 @@ paths:
   /water/glass/{glassId}:
     delete:
       $ref: ../swagger/paths/water/{id}/delete.yaml
+  /water/daily:
+    get:
+      $ref: ../swagger/paths/water/getdaily.yaml
+  /water/monthly:
+    get:
+      $ref: ../swagger/paths/water/getmonthly.yaml
 components:
   securitySchemes:
     bearerAuth:
