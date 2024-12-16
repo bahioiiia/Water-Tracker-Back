@@ -55,7 +55,7 @@ export const getDaily = async (userId, date) => {
   const dailyNorm = user.dailyNorm || 1500; //default Daily Norm
 
   // const consumedPercentage = ((totalWater / dailyNorm) * 100).toFixed(0);
-  const consumedPercentage = (totalWater / dailyNorm).toFixed(2);
+  const consumedPercentage = Number((totalWater / dailyNorm).toFixed(2));
 
   return {
     date: date,
@@ -109,7 +109,7 @@ export const getMonthly = async (userId, date) => {
   const result = Object.keys(groupedByDay).map((day) => {
     const { totalVolume, count } = groupedByDay[day];
     // const consumedPercentage = ((totalVolume / dailyNorm) * 100).toFixed(0);
-    const consumedPercentage = (totalVolume / dailyNorm).toFixed(2);
+    const consumedPercentage = Number((totalVolume / dailyNorm).toFixed(2));
     return {
       date: date,
       // dailyNorma: ${(dailyNorm / 1000).toFixed(1)} L,
