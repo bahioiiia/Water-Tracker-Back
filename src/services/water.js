@@ -111,7 +111,7 @@ export const getMonthly = async (userId, date) => {
     // const consumedPercentage = ((totalVolume / dailyNorm) * 100).toFixed(0);
     const consumedPercentage = Number((totalVolume / dailyNorm).toFixed(2));
     return {
-      date: date,
+      date: day,
       // dailyNorma: ${(dailyNorm / 1000).toFixed(1)} L,
       dailyNorma: dailyNorm,
       // consumedPercentage: `${consumedPercentage}%`,
