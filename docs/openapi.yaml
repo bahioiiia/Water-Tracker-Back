@@ -46,7 +46,7 @@ paths:
     patch:
       $ref: ../swagger/paths/water/patch.yaml
     delete:
-      $ref: ../swagger/paths/water/{id}/delete.yaml
+      $ref: ../swagger/paths/water/delete.yaml
   /water/daily:
     get:
       $ref: ../swagger/paths/water/getdaily.yaml
