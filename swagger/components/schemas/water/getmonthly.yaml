@@ -11,8 +11,8 @@ properties:
     example: '2024-12-14T23:10'
   dailyNorma:
     description: "Water dailyNorma"
-    type: string
-    example: '2.5 L'
+    type: number
+    example: '2500'
   numberGlasses:
     description: "Water numberGlasses"
     type: number
@@ -20,4 +20,4 @@ properties:
   consumedPercentage:
     description: "Water consumedPercentage"
     type: number
-    example: '83%'
+    example: '0.83'
