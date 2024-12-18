@@ -1,4 +1,4 @@
-type: object
+type: array
 required:
   - numberGlasses
   - date
@@ -13,11 +13,11 @@ properties:
     description: "Water dailyNorma"
     type: number
     example: '2500'
-  numberGlasses:
-    description: "Water numberGlasses"
-    type: number
-    example: '4'
   consumedPercentage:
     description: "Water consumedPercentage"
     type: number
     example: '0.83'
+  numberGlasses:
+    description: "Water numberGlasses"
+    type: number
+    example: '4'

@@ -1,4 +1,4 @@
-description: Unauthorized error
+description: NotFound error
 content:
   application/json:
     schema:
@@ -21,4 +21,4 @@ content:
           properties:
             message:
               type: string
-              example: 'Access token expired'
+              example: 'Not found'

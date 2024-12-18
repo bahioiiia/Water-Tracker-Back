@@ -1,8 +1,10 @@
 type: object
 required:
+  - name
   - email
   - gender
   - dailyNorm
+  - avatarUrl
 properties:
   name:
     description: "User name"
@@ -20,7 +22,7 @@ properties:
     description: "User dailyNorm"
     type: number
     example: "1500"
-  photo:
+  avatarUrl:
     description: "Link to user photo"
     type: string
-    example: https://image/upload/image.jpg
+    example: "https://image/upload/image.jpg"

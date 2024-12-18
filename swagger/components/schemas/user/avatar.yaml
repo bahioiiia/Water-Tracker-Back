@@ -1,5 +1,6 @@
 type: object
 required:
+  - name
   - email
   - gender
   - dailyNorm
@@ -20,7 +21,7 @@ properties:
   dailyNorm:
     description: "User dailyNorm"
     type: string
-    example: "1500 ml"
+    example: "1500"
   avatarUrl:
     description: "Link to user avatarUrl"
     type: string

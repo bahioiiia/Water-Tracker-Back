@@ -6,12 +6,12 @@ description: 'Get Daily of waters with this endpoint'
 security:
   - bearerAuth: []
 parameters:
-    - in: query
-      name: date
-      required: true
-      schema:
-        type: string
-        example: '2024-12-14T23:10'
+  - in: query
+    name: date
+    required: true
+    schema:
+      type: string
+      example: '2024-12-14T23:10'
 responses:
   '200':
     description: Successfully found user!
@@ -31,17 +31,13 @@ responses:
               type: string
               example: Successfull find user!
             data:
-              type: array
-              items:
-                $ref: ../../components/schemas/water/getdaily.yaml
-              required:
-                - data
-                - name
-                - email
+              type: object
+              $ref: ../../components/schemas/water/getdaily.yaml
   '401':
     $ref: '../../components/responses/401.yaml'
   '404':
     $ref: '../../components/responses/404.yaml'
   '500':
     $ref: '../../components/responses/500.yaml'
+
 
