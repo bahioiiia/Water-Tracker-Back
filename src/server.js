@@ -16,7 +16,12 @@ import { swaggerDocs } from './middlewares/swaggerDocs.js';
 export const setupServer = () => {
     const app = express();
 
-    app.use(cors());
+    /* app.use(cors()); */
+    app.use(cors({
+    origin: "http://localhost:3000", // Разрешаем localhost:3000
+    credentials: true, // Разрешаем передачу cookies
+    })
+);
     app.use(express.json());
     app.use(cookieParser());
     app.use(express.static('uploads'));
