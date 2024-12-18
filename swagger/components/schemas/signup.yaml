@@ -15,7 +15,7 @@ properties:
     type: string
     example: 'world@gmail.com'
   name:
-    description: "Name user"
+    description: "User"
     type: string
     example: "Joy"
   createdAt:
@@ -25,4 +25,4 @@ properties:
   avatarUrl:
     description: "AvatarUrl user Sing Up"
     type: string
-    example: "https://image/upload/image.jpg"
+    example: "null"

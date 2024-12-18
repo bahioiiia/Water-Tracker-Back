@@ -15,7 +15,7 @@ export const getUser = async (payload) => {
 };
 
 export const patchUser = async (user, body) => {
-  const newpassword = body.newpassword;
+  const newpassword = body.password;
   const newDailyNorm = body.dailyNorm;
 
   if (newpassword) {
