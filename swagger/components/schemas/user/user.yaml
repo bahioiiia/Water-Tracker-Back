@@ -17,6 +17,6 @@ properties:
     type: number
     example: "1500"
   avatarUrl:
-    description: "Link to user photo"
+    description: "Link to user avatar"
     type: string
     example: "https://image/upload/image.jpg"
