@@ -70,7 +70,7 @@
                     ],
                     "example": "Woman"
                   },
-                  "newpassword": {
+                  "password": {
                     "description": "User new password",
                     "type": "string",
                     "example": "87654321"
@@ -693,7 +693,7 @@
         ],
         "summary": "Delete water by glass",
         "operationId": "deleteWater",
-        "description": "Get water by glassId",
+        "description": "Delete water by glassId",
         "security": [
           {
             "bearerAuth": []
@@ -1060,7 +1060,7 @@
             "example": "world@gmail.com"
           },
           "name": {
-            "description": "Name user",
+            "description": "User",
             "type": "string",
             "example": "Joy"
           },
@@ -1072,7 +1072,7 @@
           "avatarUrl": {
             "description": "AvatarUrl user Sing Up",
             "type": "string",
-            "example": "https://image/upload/image.jpg"
+            "example": "null"
           }
         }
       },
