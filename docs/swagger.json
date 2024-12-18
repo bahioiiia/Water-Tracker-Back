@@ -533,26 +533,33 @@
             "bearerAuth": []
           }
         ],
-        "parameters": [
-          {
-            "in": "query",
-            "name": "glass",
-            "schema": {
-              "type": "number"
-            },
-            "example": "250"
-          },
-          {
-            "in": "query",
-            "name": "date",
-            "schema": {
-              "type": "string",
-              "example": "2024-12-14T23:10"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "volume",
+                  "date"
+                ],
+                "properties": {
+                  "volume": {
+                    "description": "Glass volume",
+                    "type": "number",
+                    "example": "150"
+                  },
+                  "date": {
+                    "description": "Date glass",
+                    "type": "string",
+                    "example": "2024-12-14T23:10"
+                  }
+                }
+              }
             }
           }
-        ],
+        },
         "responses": {
-          "200": {
+          "201": {
             "description": "Successfully found water!",
             "content": {
               "application/json": {
@@ -566,7 +573,7 @@
                   "properties": {
                     "status": {
                       "type": "integer",
-                      "example": 200
+                      "example": 201
                     },
                     "message": {
                       "type": "string",
@@ -576,11 +583,7 @@
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/water"
-                      },
-                      "required": [
-                        "glass",
-                        "date"
-                      ]
+                      }
                     }
                   }
                 }
@@ -618,26 +621,33 @@
               "type": "string",
               "example": "65e4decdd286b30065d54af9"
             }
-          },
-          {
-            "in": "query",
-            "name": "volume",
-            "required": true,
-            "schema": {
-              "type": "number",
-              "example": "3600"
-            }
-          },
-          {
-            "in": "query",
-            "name": "date",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "example": "2024-12-14T23:10"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "volume",
+                  "date"
+                ],
+                "properties": {
+                  "volume": {
+                    "description": "Glass volume",
+                    "type": "number",
+                    "example": "150"
+                  },
+                  "date": {
+                    "description": "Date glass",
+                    "type": "string",
+                    "example": "2024-12-14T23:10"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successfully found waters!",
@@ -1110,7 +1120,7 @@
           "volume": {
             "description": "Water volume",
             "type": "number",
-            "example": "3600"
+            "example": "250"
           },
           "dailyNorm": {
             "description": "Water dailyNorm",

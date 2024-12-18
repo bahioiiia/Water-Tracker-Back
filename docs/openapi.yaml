@@ -20,7 +20,7 @@ servers:
 paths:
   /user/update:
     patch:
-      $ref: ../swagger/paths/user/patchupdata.yaml
+      $ref: ../swagger/paths/user/patchupdate.yaml
   /user/avatar:
     patch:
       $ref: ../swagger/paths/user/patchavatar.yaml

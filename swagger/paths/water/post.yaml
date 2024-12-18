@@ -5,19 +5,25 @@ operationId: postWater
 description: 'Post list of water with this endpoint'
 security:
   - bearerAuth: []
-parameters:
-  - in: query
-    name: glass
-    schema:
-      type: number
-    example: "250"
-  - in: query
-    name: date
-    schema:
-      type: string
-      example: '2024-12-14T23:10'
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - volume
+          - date
+        properties:
+          volume:
+            description: "Glass volume"
+            type: number
+            example: "150"
+          date:
+            description: "Date glass"
+            type: string
+            example: "2024-12-14T23:10"
 responses:
-  '200':
+  '201':
     description: Successfully found water!
     content:
       application/json:
@@ -30,7 +36,7 @@ responses:
           properties:
             status:
               type: integer
-              example: 200
+              example: 201
             message:
               type: string
               example: Successfull find water!
@@ -38,9 +44,6 @@ responses:
               type: array
               items:
                 $ref: ../../components/schemas/water/water.yaml
-              required:
-                - glass
-                - date
   '401':
     $ref: '../../components/responses/401.yaml'
   '500':
