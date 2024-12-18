@@ -18,7 +18,6 @@ export const setupServer = () => {
 
     /* app.use(cors()); */
     app.use(cors({
-    origin: "http://localhost:3000", // Разрешаем localhost:3000
     credentials: true, // Разрешаем передачу cookies
     })
 );
