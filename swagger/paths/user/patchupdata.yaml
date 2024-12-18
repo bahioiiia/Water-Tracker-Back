@@ -24,7 +24,7 @@ requestBody:
             type: string
             enum: ['Woman', 'Man']
             example: "Woman"
-          newpassword:
+          password:
             description: "User new password"
             type: string
             example: "87654321"

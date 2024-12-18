@@ -2,7 +2,7 @@ tags:
   - Water
 summary: Delete water by glass
 operationId: deleteWater
-description: 'Get water by glassId'
+description: 'Delete water by glassId'
 security:
   - bearerAuth: []
 parameters:

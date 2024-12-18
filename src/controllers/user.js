@@ -40,7 +40,7 @@ export const patchUserController = async (req, res) => {
 export const avatarUpdateController = async (req, res) => {
   const user = req.user;
   let avatarUrl = null; //  пуста
-
+// console.log(`user`, user);
   if (req.file) {
     if (enableCloudnary === 'true') {
       avatarUrl = await saveFileToCloudinary(req.file, 'avatarUrl');
