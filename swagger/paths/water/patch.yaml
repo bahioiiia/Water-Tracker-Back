@@ -12,18 +12,23 @@ parameters:
     schema:
       type: string
       example: '65e4decdd286b30065d54af9'
-  - in: query
-    name: volume
-    required: true
-    schema:
-      type: number
-      example: '3600'
-  - in: query
-    name: date
-    required: true
-    schema:
-      type: string
-      example: '2024-12-14T23:10'
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - volume
+          - date
+        properties:
+          volume: 
+            description: "Volume glass"
+            type: number
+            example: "250"
+          date:
+            description: "Date glass"
+            type: string
+            example: "2024-12-14T23:10"
 responses:
   '200':
     description: Successfully found waters!
@@ -43,11 +48,13 @@ responses:
               type: string
               example: Successfull find waters!
             data:
-              type: array
-              items:
-                $ref: ../../components/schemas/water/water.yaml
+              type: object
+              $ref: ../../components/schemas/water/water.yaml
               required:
                 - date
+                - volume
+                - dailyNorm
+
   '400':
     $ref: '../../components/responses/400.yaml'
   '401':
