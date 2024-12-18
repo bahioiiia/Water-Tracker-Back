@@ -7,7 +7,7 @@ security:
   - bearerAuth: []
 requestBody:
   content:
-    multipart/form-data:
+    application/json:
       schema:
         type: object
         properties:
@@ -27,7 +27,7 @@ requestBody:
           newpassword:
             description: "User new password"
             type: string
-            example: "54321"
+            example: "87654321"
 responses:
   '200':
     description: Successfully found user!
@@ -47,15 +47,8 @@ responses:
               type: string
               example: Successfull find user!
             data:
-              type: array
-              items:
-                $ref: ../../components/schemas/user/updata.yaml
-              required:
-                - data
-                - name
-                - email
-                - gende
-                - password
+              type: object
+              $ref: ../../components/schemas/user/updata.yaml
   '401':
     $ref: '../../components/responses/401.yaml'
   '404':

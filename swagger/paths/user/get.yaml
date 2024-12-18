@@ -2,7 +2,7 @@ tags:
   - User
 summary: Get list of user
 operationId: getUser
-description: 'Get list of users with this endpoint'
+description: 'Get list of user with this endpoint'
 security:
   - bearerAuth: []
 responses:
@@ -24,13 +24,8 @@ responses:
               type: string
               example: Successfull find user!
             data:
-              type: array
-              items:
-                $ref: '../../components/schemas/user/user.yaml'
-              required:
-                - data
-                - name
-                - email
+              type: object
+              $ref: '../../components/schemas/user/user.yaml'
   '401':
     $ref: '../../components/responses/401.yaml'
   '404':

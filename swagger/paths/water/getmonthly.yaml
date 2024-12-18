@@ -32,12 +32,7 @@ responses:
               example: Successfull find user!
             data:
               type: array
-              items:
-                $ref: ../../components/schemas/water/getmonthly.yaml
-              required:
-                - data
-                - name
-                - email
+              $ref: ../../components/schemas/water/getmonthly.yaml
   '401':
     $ref: '../../components/responses/401.yaml'
   '404':

@@ -1,12 +1,12 @@
 openapi: 3.1.0
 info:
   version: 1.0.0
-  title: Contacts app
+  title: User app
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   description: 
-    This is a documentation of contacts app
+    This is a documentation of user waters app
 tags:
   - name: User
     description: Operations about users.

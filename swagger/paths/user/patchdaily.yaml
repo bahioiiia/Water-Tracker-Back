@@ -7,7 +7,7 @@ security:
   - bearerAuth: []
 requestBody:
   content:
-    multipart/form-data:
+    application/json:
       schema:
         type: object
         required:
@@ -36,15 +36,14 @@ responses:
               type: string
               example: Successfull find user!
             data:
-              type: array
-              items:
-                $ref: ../../components/schemas/user/dailyNorm.yaml
-              required:
-                - data
-                - name
-                - email
-                - gende
-                - dailyNorm
+              type: object
+              $ref: ../../components/schemas/user/dailyNorm.yaml
+              # required:
+              #   - data
+              #   - name
+              #   - email
+              #   - gende
+              #   - dailyNorm
   '401':
     $ref: '../../components/responses/401.yaml'
   '404':

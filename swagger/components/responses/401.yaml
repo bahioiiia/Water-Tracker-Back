@@ -6,6 +6,7 @@ content:
       required:
         - status
         - message
+        - data
       properties:
         status:
           type: integer
@@ -13,3 +14,11 @@ content:
         message:
           type: string
           example: UnauthorizedError
+        data:
+          type: object
+          required:
+            - message
+          properties:
+            message:
+              type: string
+              example: 'Access token expired'

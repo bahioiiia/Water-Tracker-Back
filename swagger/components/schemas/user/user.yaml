@@ -1,8 +1,10 @@
 type: object
 required:
+  - name
   - email
   - gender
   - dailyNorm
+  - avatarUrl
 properties:
   name:
     description: "User name"
@@ -18,8 +20,8 @@ properties:
     enum: ['Woman', 'Man']
   dailyNorm:
     description: "User dailyNorm"
-    type: string
-    example: "1500 ml"
+    type: number
+    example: "1500"
   avatarUrl:
     description: "Link to user avatarUrl"
     type: string

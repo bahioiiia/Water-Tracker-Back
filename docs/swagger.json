@@ -2,12 +2,12 @@
   "openapi": "3.1.0",
   "info": {
     "version": "1.0.0",
-    "title": "Contacts app",
+    "title": "User app",
     "license": {
       "name": "Apache 2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "description": "This is a documentation of contacts app"
+    "description": "This is a documentation of user waters app"
   },
   "servers": [
     {
@@ -47,7 +47,7 @@
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
@@ -73,7 +73,7 @@
                   "newpassword": {
                     "description": "User new password",
                     "type": "string",
-                    "example": "54321"
+                    "example": "87654321"
                   }
                 }
               }
@@ -102,17 +102,8 @@
                       "example": "Successfull find user!"
                     },
                     "data": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/updata"
-                      },
-                      "required": [
-                        "data",
-                        "name",
-                        "email",
-                        "gende",
-                        "password"
-                      ]
+                      "type": "object",
+                      "$ref": "#/components/schemas/updata"
                     }
                   }
                 }
@@ -146,7 +137,7 @@
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "required": [
@@ -185,16 +176,8 @@
                       "example": "Successfull find user!"
                     },
                     "data": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/avatar"
-                      },
-                      "required": [
-                        "data",
-                        "name",
-                        "email",
-                        "gende"
-                      ]
+                      "type": "object",
+                      "$ref": "#/components/schemas/avatar"
                     }
                   }
                 }
@@ -228,7 +211,7 @@
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "required": [
@@ -267,17 +250,8 @@
                       "example": "Successfull find user!"
                     },
                     "data": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/dailyNorm"
-                      },
-                      "required": [
-                        "data",
-                        "name",
-                        "email",
-                        "gende",
-                        "dailyNorm"
-                      ]
+                      "type": "object",
+                      "$ref": "#/components/schemas/dailyNorm"
                     }
                   }
                 }
@@ -303,7 +277,7 @@
         ],
         "summary": "Get list of user",
         "operationId": "getUser",
-        "description": "Get list of users with this endpoint",
+        "description": "Get list of user with this endpoint",
         "security": [
           {
             "bearerAuth": []
@@ -331,15 +305,8 @@
                       "example": "Successfull find user!"
                     },
                     "data": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/user"
-                      },
-                      "required": [
-                        "data",
-                        "name",
-                        "email"
-                      ]
+                      "type": "object",
+                      "$ref": "#/components/schemas/user"
                     }
                   }
                 }
@@ -373,7 +340,7 @@
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "required": [
@@ -382,14 +349,14 @@
                 ],
                 "properties": {
                   "email": {
-                    "description": "SignUp email",
+                    "description": "User's in email. Must be a valid email",
                     "type": "string",
                     "example": "world@gmail.com"
                   },
                   "password": {
-                    "description": "User password (min:8, max:60)",
-                    "type": "number",
-                    "example": 12345
+                    "description": "User password must be between 8 and 64 characters",
+                    "type": "string",
+                    "example": "12345678"
                   }
                 }
               }
@@ -415,7 +382,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Successfully SignUp a user!"
+                      "example": "Successfully Sign Up a user!"
                     },
                     "data": {
                       "type": "object",
@@ -441,8 +408,8 @@
           "Auth"
         ],
         "summary": "Sign In",
-        "operationId": "loginUser",
-        "description": "Login a user with payload",
+        "operationId": "postSingin",
+        "description": "Sing in a user with payload",
         "security": [
           {
             "bearerAuth": []
@@ -450,7 +417,7 @@
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "required": [
@@ -459,14 +426,14 @@
                 ],
                 "properties": {
                   "email": {
-                    "description": "Login email",
+                    "description": "User's in email. Must be a valid email",
                     "type": "string",
                     "example": "world@gmail.com"
                   },
                   "password": {
-                    "description": "Login user password",
-                    "type": "number",
-                    "example": 12345
+                    "description": "User password must be between 8 and 64 characters",
+                    "type": "string",
+                    "example": "12345678"
                   }
                 }
               }
@@ -475,7 +442,7 @@
         },
         "responses": {
           "200": {
-            "description": "Login a user",
+            "description": "Sing in a user",
             "content": {
               "application/json": {
                 "schema": {
@@ -492,7 +459,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Successfully logged in an user!"
+                      "example": "Successfully Sing in in an user!"
                     },
                     "data": {
                       "type": "object",
@@ -817,15 +784,8 @@
                       "example": "Successfull find user!"
                     },
                     "data": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/getdaily"
-                      },
-                      "required": [
-                        "data",
-                        "name",
-                        "email"
-                      ]
+                      "type": "object",
+                      "$ref": "#/components/schemas/getdaily"
                     }
                   }
                 }
@@ -891,14 +851,7 @@
                     },
                     "data": {
                       "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/getmonthly"
-                      },
-                      "required": [
-                        "data",
-                        "name",
-                        "email"
-                      ]
+                      "$ref": "#/components/schemas/getmonthly"
                     }
                   }
                 }
@@ -929,44 +882,7 @@
       "updata": {
         "type": "object",
         "required": [
-          "email",
-          "gender",
-          "dailyNorm"
-        ],
-        "properties": {
-          "name": {
-            "description": "User name",
-            "type": "string",
-            "example": "Joy"
-          },
-          "email": {
-            "description": "User email",
-            "type": "string",
-            "example": "world@gmail.com"
-          },
-          "gender": {
-            "description": "User gender",
-            "type": "string",
-            "enum": [
-              "Woman",
-              "Man"
-            ]
-          },
-          "dailyNorm": {
-            "description": "User dailyNorm",
-            "type": "string",
-            "example": "1500 ml"
-          },
-          "photo": {
-            "description": "Link to user photo",
-            "type": "string",
-            "example": "https://image/upload/image.jpg"
-          }
-        }
-      },
-      "avatar": {
-        "type": "object",
-        "required": [
+          "name",
           "email",
           "gender",
           "dailyNorm",
@@ -994,7 +910,47 @@
           "dailyNorm": {
             "description": "User dailyNorm",
             "type": "string",
-            "example": "1500 ml"
+            "example": "1500"
+          },
+          "avatarUrl": {
+            "description": "Link to user photo",
+            "type": "string",
+            "example": "https://image/upload/image.jpg"
+          }
+        }
+      },
+      "avatar": {
+        "type": "object",
+        "required": [
+          "name",
+          "email",
+          "gender",
+          "dailyNorm",
+          "avatarUrl"
+        ],
+        "properties": {
+          "name": {
+            "description": "User name",
+            "type": "string",
+            "example": "Joy"
+          },
+          "email": {
+            "description": "User email",
+            "type": "string",
+            "example": "world@gmail.com"
+          },
+          "gender": {
+            "description": "User gender",
+            "type": "string",
+            "enum": [
+              "Woman",
+              "Man"
+            ]
+          },
+          "dailyNorm": {
+            "description": "User dailyNorm",
+            "type": "string",
+            "example": "1500"
           },
           "avatarUrl": {
             "description": "Link to user avatarUrl",
@@ -1006,9 +962,11 @@
       "dailyNorm": {
         "type": "object",
         "required": [
+          "name",
           "email",
           "gender",
-          "dailyNorm"
+          "dailyNorm",
+          "avatarUrl"
         ],
         "properties": {
           "name": {
@@ -1034,7 +992,7 @@
             "type": "number",
             "example": "1500"
           },
-          "photo": {
+          "avatarUrl": {
             "description": "Link to user photo",
             "type": "string",
             "example": "https://image/upload/image.jpg"
@@ -1044,9 +1002,11 @@
       "user": {
         "type": "object",
         "required": [
+          "name",
           "email",
           "gender",
-          "dailyNorm"
+          "dailyNorm",
+          "avatarUrl"
         ],
         "properties": {
           "name": {
@@ -1069,8 +1029,8 @@
           },
           "dailyNorm": {
             "description": "User dailyNorm",
-            "type": "string",
-            "example": "1500 ml"
+            "type": "number",
+            "example": "1500"
           },
           "avatarUrl": {
             "description": "Link to user avatarUrl",
@@ -1082,21 +1042,55 @@
       "signup": {
         "type": "object",
         "required": [
+          "_id",
           "email",
-          "password"
-        ]
+          "name",
+          "createdAt",
+          "avatarUrl"
+        ],
+        "properties": {
+          "_id": {
+            "description": "Sing Up user id",
+            "type": "string",
+            "example": "65e4decdd286b30065d54af9"
+          },
+          "email": {
+            "description": "SignUp user email",
+            "type": "string",
+            "example": "world@gmail.com"
+          },
+          "name": {
+            "description": "Name user",
+            "type": "string",
+            "example": "Joy"
+          },
+          "createdAt": {
+            "description": "Sing Up user id",
+            "type": "string",
+            "example": "Date created"
+          },
+          "avatarUrl": {
+            "description": "AvatarUrl user Sing Up",
+            "type": "string",
+            "example": "https://image/upload/image.jpg"
+          }
+        }
       },
       "login": {
         "type": "object",
         "required": [
-          "email",
-          "password"
+          "accessToken",
+          "user"
         ],
         "properties": {
           "accessToken": {
-            "description": "Login contacts token",
+            "description": "Access token",
             "type": "string",
             "example": "nSu9mqGJzsaEGwx4nBXoHGykYumTCbEqUY6Xg5JB"
+          },
+          "user": {
+            "description": "User data",
+            "type": "object"
           }
         }
       },
@@ -1128,8 +1122,8 @@
       "getdaily": {
         "type": "object",
         "required": [
-          "numberGlasses",
           "date",
+          "numberGlasses",
           "dailyNorma",
           "totalWater",
           "consumedPercentage",
@@ -1143,13 +1137,13 @@
           },
           "dailyNorma": {
             "description": "Water dailyNorma",
-            "type": "string",
-            "example": "2.5 L"
+            "type": "number",
+            "example": "2500"
           },
           "totalWater": {
             "description": "Water totalWater",
-            "type": "string",
-            "example": "2.0 L"
+            "type": "number",
+            "example": "2000"
           },
           "numberGlasses": {
             "description": "Water numberGlasses",
@@ -1159,7 +1153,7 @@
           "consumedPercentage": {
             "description": "Water consumedPercentage",
             "type": "number",
-            "example": "83%"
+            "example": "0.83"
           },
           "logs": {
             "description": "Water data",
@@ -1168,7 +1162,7 @@
         }
       },
       "getmonthly": {
-        "type": "object",
+        "type": "array",
         "required": [
           "numberGlasses",
           "date",
@@ -1183,18 +1177,18 @@
           },
           "dailyNorma": {
             "description": "Water dailyNorma",
-            "type": "string",
-            "example": "2.5 L"
+            "type": "number",
+            "example": "2500"
+          },
+          "consumedPercentage": {
+            "description": "Water consumedPercentage",
+            "type": "number",
+            "example": "0.83"
           },
           "numberGlasses": {
             "description": "Water numberGlasses",
             "type": "number",
             "example": "4"
-          },
-          "consumedPercentage": {
-            "description": "Water consumedPercentage",
-            "type": "number",
-            "example": "83%"
           }
         }
       }
@@ -1245,7 +1239,8 @@
               "type": "object",
               "required": [
                 "status",
-                "message"
+                "message",
+                "data"
               ],
               "properties": {
                 "status": {
@@ -1255,6 +1250,18 @@
                 "message": {
                   "type": "string",
                   "example": "UnauthorizedError"
+                },
+                "data": {
+                  "type": "object",
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Access token expired"
+                    }
+                  }
                 }
               }
             }
@@ -1262,7 +1269,7 @@
         }
       },
       "404": {
-        "description": "Unauthorized error",
+        "description": "NotFound error",
         "content": {
           "application/json": {
             "schema": {
@@ -1289,7 +1296,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Access token expired"
+                      "example": "Not found"
                     }
                   }
                 }

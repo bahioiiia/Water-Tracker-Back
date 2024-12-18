@@ -1,9 +1,12 @@
 type: object
 required:
-  - email
-  - password
+  - accessToken
+  - user
 properties:
   accessToken:
-    description: "Login contacts token"
+    description: "Access token"
     type: string
     example: nSu9mqGJzsaEGwx4nBXoHGykYumTCbEqUY6Xg5JB
+  user:
+    description: "User data"
+    type: object
