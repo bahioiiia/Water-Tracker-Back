@@ -1,10 +1,4 @@
 type: object
-required:
-  - name
-  - email
-  - gender
-  - dailyNorm
-  - avatarUrl
 properties:
   name:
     description: "User name"
@@ -23,6 +17,6 @@ properties:
     type: number
     example: "1500"
   avatarUrl:
-    description: "Link to user avatarUrl"
+    description: "Link to user photo"
     type: string
-    example: https://image/upload/image.jpg
+    example: "https://image/upload/image.jpg"

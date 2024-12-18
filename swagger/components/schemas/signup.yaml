@@ -1,10 +1,4 @@
 type: object
-required:
-  - _id
-  - email
-  - name
-  - createdAt
-  - avatarUrl
 properties:
   _id:
     description: "Sing Up user id"
