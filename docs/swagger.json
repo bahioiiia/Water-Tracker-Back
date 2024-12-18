@@ -103,7 +103,14 @@
                     },
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/updata"
+                      "$ref": "#/components/schemas/user",
+                      "required": [
+                        "name",
+                        "email",
+                        "gender",
+                        "dailyNorm",
+                        "avatarUrl"
+                      ]
                     }
                   }
                 }
@@ -177,7 +184,14 @@
                     },
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/avatar"
+                      "$ref": "#/components/schemas/user",
+                      "required": [
+                        "name",
+                        "email",
+                        "gender",
+                        "dailyNorm",
+                        "avatarUrl"
+                      ]
                     }
                   }
                 }
@@ -251,7 +265,14 @@
                     },
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/dailyNorm"
+                      "$ref": "#/components/schemas/user",
+                      "required": [
+                        "name",
+                        "email",
+                        "gender",
+                        "dailyNorm",
+                        "avatarUrl"
+                      ]
                     }
                   }
                 }
@@ -306,7 +327,14 @@
                     },
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/user"
+                      "$ref": "#/components/schemas/user",
+                      "required": [
+                        "name",
+                        "email",
+                        "gender",
+                        "dailyNorm",
+                        "avatarUrl"
+                      ]
                     }
                   }
                 }
@@ -386,7 +414,14 @@
                     },
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/signup"
+                      "$ref": "#/components/schemas/signup",
+                      "required": [
+                        "_id",
+                        "email",
+                        "name",
+                        "createdAt",
+                        "avatarUrl"
+                      ]
                     }
                   }
                 }
@@ -785,7 +820,15 @@
                     },
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/getdaily"
+                      "$ref": "#/components/schemas/getdaily",
+                      "required": [
+                        "date",
+                        "numberGlasses",
+                        "dailyNorma",
+                        "totalWater",
+                        "consumedPercentage",
+                        "logs"
+                      ]
                     }
                   }
                 }
@@ -879,135 +922,8 @@
       }
     },
     "schemas": {
-      "updata": {
-        "type": "object",
-        "required": [
-          "name",
-          "email",
-          "gender",
-          "dailyNorm",
-          "avatarUrl"
-        ],
-        "properties": {
-          "name": {
-            "description": "User name",
-            "type": "string",
-            "example": "Joy"
-          },
-          "email": {
-            "description": "User email",
-            "type": "string",
-            "example": "world@gmail.com"
-          },
-          "gender": {
-            "description": "User gender",
-            "type": "string",
-            "enum": [
-              "Woman",
-              "Man"
-            ]
-          },
-          "dailyNorm": {
-            "description": "User dailyNorm",
-            "type": "string",
-            "example": "1500"
-          },
-          "avatarUrl": {
-            "description": "Link to user photo",
-            "type": "string",
-            "example": "https://image/upload/image.jpg"
-          }
-        }
-      },
-      "avatar": {
-        "type": "object",
-        "required": [
-          "name",
-          "email",
-          "gender",
-          "dailyNorm",
-          "avatarUrl"
-        ],
-        "properties": {
-          "name": {
-            "description": "User name",
-            "type": "string",
-            "example": "Joy"
-          },
-          "email": {
-            "description": "User email",
-            "type": "string",
-            "example": "world@gmail.com"
-          },
-          "gender": {
-            "description": "User gender",
-            "type": "string",
-            "enum": [
-              "Woman",
-              "Man"
-            ]
-          },
-          "dailyNorm": {
-            "description": "User dailyNorm",
-            "type": "string",
-            "example": "1500"
-          },
-          "avatarUrl": {
-            "description": "Link to user avatarUrl",
-            "type": "string",
-            "example": "https://image/upload/image.jpg"
-          }
-        }
-      },
-      "dailyNorm": {
-        "type": "object",
-        "required": [
-          "name",
-          "email",
-          "gender",
-          "dailyNorm",
-          "avatarUrl"
-        ],
-        "properties": {
-          "name": {
-            "description": "User name",
-            "type": "string",
-            "example": "Joy"
-          },
-          "email": {
-            "description": "User email",
-            "type": "string",
-            "example": "world@gmail.com"
-          },
-          "gender": {
-            "description": "User gender",
-            "type": "string",
-            "enum": [
-              "Woman",
-              "Man"
-            ]
-          },
-          "dailyNorm": {
-            "description": "User dailyNorm",
-            "type": "number",
-            "example": "1500"
-          },
-          "avatarUrl": {
-            "description": "Link to user photo",
-            "type": "string",
-            "example": "https://image/upload/image.jpg"
-          }
-        }
-      },
       "user": {
         "type": "object",
-        "required": [
-          "name",
-          "email",
-          "gender",
-          "dailyNorm",
-          "avatarUrl"
-        ],
         "properties": {
           "name": {
             "description": "User name",
@@ -1033,7 +949,7 @@
             "example": "1500"
           },
           "avatarUrl": {
-            "description": "Link to user avatarUrl",
+            "description": "Link to user photo",
             "type": "string",
             "example": "https://image/upload/image.jpg"
           }
@@ -1041,13 +957,6 @@
       },
       "signup": {
         "type": "object",
-        "required": [
-          "_id",
-          "email",
-          "name",
-          "createdAt",
-          "avatarUrl"
-        ],
         "properties": {
           "_id": {
             "description": "Sing Up user id",
@@ -1121,14 +1030,6 @@
       },
       "getdaily": {
         "type": "object",
-        "required": [
-          "date",
-          "numberGlasses",
-          "dailyNorma",
-          "totalWater",
-          "consumedPercentage",
-          "logs"
-        ],
         "properties": {
           "date": {
             "description": "Water date",

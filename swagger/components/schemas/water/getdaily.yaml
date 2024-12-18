@@ -1,11 +1,4 @@
 type: object
-required:
-  - date
-  - numberGlasses
-  - dailyNorma
-  - totalWater
-  - consumedPercentage
-  - logs
 properties:
   date:
     description: "Water date"

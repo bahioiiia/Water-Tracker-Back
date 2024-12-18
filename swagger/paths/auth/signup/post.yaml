@@ -43,6 +43,12 @@ responses:
             data:
               type: object
               $ref: '../../../components/schemas/signup.yaml'
+              required:
+                - _id
+                - email
+                - name
+                - createdAt
+                - avatarUrl
   '409':
     $ref: '../../../components/responses/user/409.yaml'
   '500':

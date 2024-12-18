@@ -37,12 +37,13 @@ responses:
               example: Successfull find user!
             data:
               type: object
-              $ref: ../../components/schemas/user/avatar.yaml
-              # required:
-              #   - data
-              #   - name
-              #   - email
-              #   - gende
+              $ref: ../../components/schemas/user/user.yaml
+              required:
+                - name
+                - email
+                - gender
+                - dailyNorm
+                - avatarUrl
   '401':
     $ref: '../../components/responses/401.yaml'
   '404':

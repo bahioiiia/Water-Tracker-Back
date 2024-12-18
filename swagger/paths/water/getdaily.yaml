@@ -33,6 +33,13 @@ responses:
             data:
               type: object
               $ref: ../../components/schemas/water/getdaily.yaml
+              required:
+                - date
+                - numberGlasses
+                - dailyNorma
+                - totalWater
+                - consumedPercentage
+                - logs
   '401':
     $ref: '../../components/responses/401.yaml'
   '404':
