@@ -1,6 +1,6 @@
 tags:
   - User
-summary: Patch updata list of user
+summary: Edit user data with this
 operationId: patchUpdata
 description: 'Patch updata user with this endpoint'
 security:

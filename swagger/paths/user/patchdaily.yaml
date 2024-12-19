@@ -1,6 +1,6 @@
 tags:
   - User
-summary: Patch updata dailyNorm
+summary: Update user's dailyNorm
 operationId: patchUpdataDaily
 description: 'Patch updata dailyNorm with this endpoint'
 security:

@@ -1,6 +1,6 @@
 tags:
   - User
-summary: Patch avatar of user
+summary: Update user's avatar
 operationId: patchAvatar
 description: 'Patch user avatar with this endpoint'
 security:

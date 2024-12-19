@@ -1,6 +1,6 @@
 tags:
   - Water
-summary: Patch list of water
+summary: Edit glass of water data
 operationId: patchWater
 description: 'Patch waters with this endpoint'
 security:

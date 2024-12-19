@@ -1,6 +1,6 @@
 tags:
   - Water
-summary: Post list of water
+summary: Add a glass of water
 operationId: postWater
 description: 'Post list of water with this endpoint'
 security:
