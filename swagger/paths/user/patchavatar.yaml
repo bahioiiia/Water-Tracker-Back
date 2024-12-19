@@ -7,16 +7,16 @@ security:
   - bearerAuth: []
 requestBody:
   content:
-    application/json:
+    multipart/form-data:
       schema:
         type: object
         required:
-          - avatar
+          - avatarUrl
         properties:
-          avatar:
+          avatarUrl:
             description: "Avatar user"
             type: string
-            format: string
+            format: binary
 responses:
   '200':
     description: Successfully found user!

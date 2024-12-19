@@ -1,8 +1,4 @@
 type: object
-required:
-  - date
-  - volume
-  - dailyNorm
 properties:
   date:
     description: "Water date"
@@ -11,7 +7,7 @@ properties:
   volume:
     description: "Water volume"
     type: number
-    example: '3600'
+    example: '300'
   dailyNorm:
     description: "Water dailyNorm"
     type: number
