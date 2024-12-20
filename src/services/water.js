@@ -67,7 +67,7 @@ export const getDaily = async (userId, date) => {
     consumedPercentage,
     numberGlasses: logs.length,
     logs: logs.map((log) => ({
-      id: log._id,
+      _id: log._id,
       volume: log.volume,
       date: log.date,
     })),
