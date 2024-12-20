@@ -6,7 +6,7 @@ import { saveFileToCloudinary } from '../utils/saveFileToCloudinary.js';
 import { env } from '../utils/env.js';
 
 
-const enableCloudnary = env("ENABLE_CLOUDINARY");
+const enableCloudinary = env("ENABLE_CLOUDINARY");
 
 export const getUserController = async (req, res) => {
   const data = await getUser(req.user);
@@ -39,10 +39,11 @@ export const patchUserController = async (req, res) => {
 
 export const avatarUpdateController = async (req, res) => {
   const user = req.user;
+  console.log("old avatar", user.avatarUrl);
   let avatarUrl = null; //  пуста
   if (req.file) {
-    if (enableCloudnary === 'true') {
-      avatarUrl = await saveFileToCloudinary(req.file, 'avatarUrl');
+    if (enableCloudinary === 'true') {
+      avatarUrl = await saveFileToCloudinary(req.file, 'avatarUrl', user.avatarUrl);
     } else {
       await saveFileToUploadDir(req.file);
       avatarUrl = path.join(req.file.filename);
@@ -56,7 +57,7 @@ export const avatarUpdateController = async (req, res) => {
   }
   res.json({
     status: 200,
-    message: `Successfully patched a user!`,
+    message: `Successfully uploaded user avatar!`,
     data: data,
   });
 };
@@ -84,7 +85,6 @@ export const patchdailyNormController = async (req, res) => {
 //   const userId = req.user.userId;
   
 //   const data = await deleteContactById(id, userId);
-//     // console.log(data);
 //     if (!data) {
 //       throw createHttpError(404, `Contact id= ${id} not found`);
 //     }

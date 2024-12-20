@@ -14,9 +14,23 @@ cloudinary.config({
     api_secret,
 });
 
-export const saveFileToCloudinary = async (file, folder) => {
+function publicIdFromUrl(url, folder) {
+    const urlParts = url.split('/'); // Розбиваємо URL на частини
+    const fileName = urlParts[urlParts.length - 1]; // Ім'я файлу з розширенням
+
+    const fileNameWithoutExtension = fileName.split('.').slice(0, -1).join('.'); // Видаляємо розширення
+
+    return folder ? `${folder}/${fileNameWithoutExtension}`: `${fileNameWithoutExtension}`;
+}
+
+export const saveFileToCloudinary = async (file, folder, oldAvatarUrl) => {
+    
     try {
-        const response = await cloudinary.uploader.upload(file.path, { folder,});
+        const response = await cloudinary.uploader.upload(file.path, { folder, });
+        if (oldAvatarUrl) { // Якщо старий аватар був, то видаляємо його з Cloudinary
+            const publicId = publicIdFromUrl(oldAvatarUrl, folder);
+            await cloudinary.uploader.destroy(publicId);
+        }
         return response.secure_url;
     }
     //catch (error) { throw error; }
