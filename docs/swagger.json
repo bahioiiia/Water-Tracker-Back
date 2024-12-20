@@ -37,7 +37,7 @@
         "tags": [
           "User"
         ],
-        "summary": "Patch updata list of user",
+        "summary": "Edit user data with this",
         "operationId": "patchUpdata",
         "description": "Patch updata user with this endpoint",
         "security": [
@@ -134,7 +134,7 @@
         "tags": [
           "User"
         ],
-        "summary": "Patch avatar of user",
+        "summary": "Update user's avatar",
         "operationId": "patchAvatar",
         "description": "Patch user avatar with this endpoint",
         "security": [
@@ -215,7 +215,7 @@
         "tags": [
           "User"
         ],
-        "summary": "Patch updata dailyNorm",
+        "summary": "Update user's dailyNorm",
         "operationId": "patchUpdataDaily",
         "description": "Patch updata dailyNorm with this endpoint",
         "security": [
@@ -560,7 +560,7 @@
         "tags": [
           "Water"
         ],
-        "summary": "Post list of water",
+        "summary": "Add a glass of water",
         "operationId": "postWater",
         "description": "Post list of water with this endpoint",
         "security": [
@@ -644,7 +644,7 @@
         "tags": [
           "Water"
         ],
-        "summary": "Patch list of water",
+        "summary": "Edit glass of water data",
         "operationId": "patchWater",
         "description": "Patch waters with this endpoint",
         "security": [
