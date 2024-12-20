@@ -6,7 +6,7 @@ import { saveFileToCloudinary } from '../utils/saveFileToCloudinary.js';
 import { env } from '../utils/env.js';
 
 
-const enableCloudnary = env("ENABLE_CLOUDNARY");
+const enableCloudnary = env("ENABLE_CLOUDINARY");
 
 export const getUserController = async (req, res) => {
   const data = await getUser(req.user);
@@ -40,7 +40,6 @@ export const patchUserController = async (req, res) => {
 export const avatarUpdateController = async (req, res) => {
   const user = req.user;
   let avatarUrl = null; //  пуста
-// console.log(`user`, user);
   if (req.file) {
     if (enableCloudnary === 'true') {
       avatarUrl = await saveFileToCloudinary(req.file, 'avatarUrl');
