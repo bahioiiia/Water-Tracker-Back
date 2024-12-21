@@ -1,4 +1,4 @@
-import { getUser, patchAvatar, patchUser } from '../services/user.js';
+import { getUser, patchAvatar, patchDailyNorm, patchUser } from '../services/user.js';
 import createHttpError from 'http-errors';
 import { saveFileToUploadDir } from '../utils/saveFileToUploadDir.js';
 import * as path from "node:path";
@@ -67,7 +67,7 @@ export const patchdailyNormController = async (req, res) => {
   const user = req.user;
   const body = req.body;
   if (body) {
-    const data = await patchUser(user, body);
+    const data = await patchDailyNorm(user, body);
     if (!data) {
       throw createHttpError(404, `Not found`);
     }
@@ -78,17 +78,3 @@ export const patchdailyNormController = async (req, res) => {
     });
   }
 };
-
-
-// export const deleteUserController = async (req, res) => {
-//   const { id } = req.params;
-//   const userId = req.user.userId;
-  
-//   const data = await deleteContactById(id, userId);
-//     if (!data) {
-//       throw createHttpError(404, `Contact id= ${id} not found`);
-//     }
-//     res.status(204).json();
-// };
-
- 
