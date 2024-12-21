@@ -34,13 +34,10 @@ export const patchUser = async (user, body) => {
       };
   }
   
-  const passwordCompare = await bckrypt.compare(outDatePassword, user.password);
- 
-  if (!passwordCompare) {
-    throw createHttpError(401, 'Password invalid');
-  }
-
-  if (passwordCompare) {
+  
+  if(newPassword){
+    const passwordCompare = await bckrypt.compare(outDatePassword, user.password);
+    if (passwordCompare) {
       const hashPassword = await bckrypt.hash(newPassword, 10);
 
       const data = await UserCollection.findOneAndUpdate(
@@ -57,7 +54,10 @@ export const patchUser = async (user, body) => {
       };
     }
 
-
+    if (!passwordCompare) {
+      throw createHttpError(401, 'Password invalid');
+    }
+}
 };
 
 export const patchDailyNorm = async (user, body) => {
