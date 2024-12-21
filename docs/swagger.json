@@ -595,7 +595,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successfully found water!",
+            "description": "Successfully added glass!",
             "content": {
               "application/json": {
                 "schema": {

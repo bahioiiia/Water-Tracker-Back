@@ -24,7 +24,7 @@ requestBody:
             example: "2024-12-14T23:10"
 responses:
   '200':
-    description: Successfully found water!
+    description: Successfully added glass!
     content:
       application/json:
         schema:
