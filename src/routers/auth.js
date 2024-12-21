@@ -10,7 +10,7 @@ authRouter.post("/signup", validateBody(vldt.authRegisterSchema), ctrlWrapper(au
 
 authRouter.post("/signin", validateBody(vldt.authLoginSchema), ctrlWrapper(auth.loginController));
 
-authRouter.post("/refresh", ctrlWrapper(auth.refreshSessionController),);
+authRouter.get("/refresh", ctrlWrapper(auth.refreshSessionController),);
 
 authRouter.post('/logout', ctrlWrapper(auth.logoutController));
 /* MAIL */
