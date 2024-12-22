@@ -13,10 +13,23 @@ import authRouter from "./routers/auth.js";
 import { UPLOAD_DIR } from './constants/index.js';
 import { swaggerDocs } from './middlewares/swaggerDocs.js';
 
+const allowedOrigins = ['http://localhost:5173', 'https://water-tracker-murex.vercel.app/'];
+
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true
+};
+
 export const setupServer = () => {
     const app = express();
 
-    app.use(cors({ origin: ['http://localhost:5173', 'https://water-tracker-murex.vercel.app/'], credentials: true }));
+    app.use(cors(corsOptions));
     app.use(express.json());
     app.use(cookieParser());
     app.use(express.static('uploads'));
