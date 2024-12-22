@@ -70,7 +70,12 @@
                     ],
                     "example": "Woman"
                   },
-                  "password": {
+                  "outDatePassword": {
+                    "description": "User outdated password",
+                    "type": "string",
+                    "example": "12345678"
+                  },
+                  "newPassword": {
                     "description": "User new password",
                     "type": "string",
                     "example": "87654321"
