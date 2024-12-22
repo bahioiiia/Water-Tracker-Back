@@ -29,7 +29,8 @@ const corsOptions = {
 export const setupServer = () => {
     const app = express();
 
-    app.use(cors(corsOptions));
+    //app.use(cors(corsOptions));
+    app.use(cors({ origin: 'https://water-tracker-murex.vercel.app', credentials: true }));
     app.use(express.json());
     app.use(cookieParser());
     app.use(express.static('uploads'));
