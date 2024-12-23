@@ -9,7 +9,11 @@ export const addGlassController = async (req, res) => {
   res.status(201).json({
     status: 201,
     message: 'Successfully created a glass of water!',
-    data,
+    data: {
+      date: data.date,
+      volume: data.volume,
+      dailyNorm: data.dailyNorm,
+    },
   });
 };
 
@@ -37,7 +41,11 @@ export const patchGlassController = async (req, res) => {
   res.status(200).json({
     status: 200,
     message: 'Glass patched successfully',
-    data: result.data,
+    data: {
+      date: result.data.date,
+      volume: result.data.volume,
+      dailyNorm: result.data.dailyNorm,
+    },
   });
 };
 
