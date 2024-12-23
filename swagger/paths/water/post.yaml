@@ -47,7 +47,7 @@ responses:
                 required:
                   - date
                   - volume
-                  - dailyNorm
+                  - _id
   '401':
     $ref: '../../components/responses/401.yaml'
   '500':
