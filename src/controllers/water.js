@@ -10,7 +10,7 @@ export const addGlassController = async (req, res) => {
     status: 201,
     message: 'Successfully created a glass of water!',
     data: {
-      glassId: data._id,
+      _id: data._id,
       date: data.date,
       volume: data.volume,
     },
@@ -42,7 +42,7 @@ export const patchGlassController = async (req, res) => {
     status: 200,
     message: 'Glass patched successfully',
     data: {
-      glassId: result.data._id,
+      _id: result.data._id,
       date: result.data.date,
       volume: result.data.volume,
     },
