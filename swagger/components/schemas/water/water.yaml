@@ -8,8 +8,8 @@ properties:
     description: "Water volume"
     type: number
     example: '300'
-  dailyNorm:
-    description: "Water dailyNorm"
-    type: number
-    example: '2500'
+  _id:
+    description: "GlassId water"
+    type: string
+    example: '675e2bdc8d5c49df21d132ff'
 
