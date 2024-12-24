@@ -33,7 +33,7 @@ const userSchema = new Schema(
     },
     dailyNorm: {
       type: Number,
-      default: `1500`,
+      default: `2000`,
       required: true,
     },
   },
